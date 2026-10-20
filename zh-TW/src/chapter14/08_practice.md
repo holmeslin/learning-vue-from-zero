@@ -142,7 +142,7 @@ async function like(id: string) {
   try {
     await $fetch(`/api/messages/${id}/like`, { method: "POST" });
   } catch (err) {
-    showError(err);
+    showErrorMessage(err);
   }
   await refresh();
 }

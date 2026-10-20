@@ -75,7 +75,7 @@ export const useCartStore = defineStore("cart", () => {
 
 這就是第 8 章的 setup store，加上第 10 章教的型別，只少了最上面的 `import`。第 12 章說過 Nuxt 會自動匯入（auto-import）`ref`、`computed`；裝了 `@pinia/nuxt` 之後，`defineStore` 和 `storeToRefs` 也會自動匯入。
 
-store 本身也一樣：**`app/stores/` 裡的檔案會被自動匯入**，用的時候直接呼叫 `useCartStore()` 就好。只有 `app/stores/` 這一層會被掃描，放在 `app/stores/shop/cart.ts` 這種子資料夾裡的不會。
+store 本身也一樣：**`app/stores/` 裡的檔案會被自動匯入**，用的時候直接呼叫 `useCartStore()` 就好。只有 `app/stores/` 這一層會被掃描，放在 `app/stores/shop/cart.ts` 這種子資料夾裡的不會（子資料夾裡的 `index.ts` 例外）。
 
 新增 `app/components/CartBadge.vue`：
 

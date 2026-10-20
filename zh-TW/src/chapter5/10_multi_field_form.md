@@ -48,7 +48,7 @@ function handleSubmit() {
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form novalidate @submit.prevent="handleSubmit">
     <p>
       <label for="name">名字：</label>
       <input id="name" v-model.trim="form.name" />
@@ -105,6 +105,7 @@ function handleSubmit() {
 **送出**
 
 - `@submit.prevent` 是第 1 集學的：交給 `handleSubmit` 處理，不讓頁面重新載入。按「報名」按鈕或在輸入框裡按 Enter 都會送出。
+- `novalidate` 是關掉瀏覽器自己的檢查。`type="email"` 的輸入框放在表單裡，瀏覽器會先檢查格式，不對就擋下送出、跳出它自己的提示，`handleSubmit` 根本不會執行。這裡要自己用 `errors` 檢查，所以把它關掉。
 - 有錯誤就把 `showErrors` 打開，然後 `return`，不往下做。
 - 沒有錯誤，就把表單內容存進 `submitted`。這裡用第 2 章的展開語法 `{ ...form.value }` 複製一份，讓「已送出的資料」和「表單」分開，之後表單怎麼改都不會影響已送出的資料。
 - 最後 `form.value = createEmptyForm()` 換上一張全新的空白表單。整個換掉的寫法只有 `ref` 能用，第 6 集說過，`reactive` 不行。

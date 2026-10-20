@@ -118,7 +118,7 @@ export default defineNuxtRouteMiddleware(() => {
 
 這個 middleware 只檢查「有沒有 `admin_token` 這個 cookie」，沒有就送去登入頁。
 
-和第 9 章 Vue Router 的導覽守衛很像。差別是在 Nuxt 裡，middleware 在兩個地方都會執行：直接在網址列打 `/admin` 時，它在伺服器上執行；在網站裡點連結換頁時，它在瀏覽器裡執行。
+和第 9 章 Vue Router 的導覽守衛很像。差別是在 Nuxt 裡，middleware 在兩個地方都會執行：直接在網址列打 `/admin` 時，它先在伺服器上執行一次，頁面送到瀏覽器 hydration 時會在瀏覽器再執行一次；在網站裡點連結換頁時，它只在瀏覽器裡執行。
 
 > 檔名加上 `.global`，例如 `app/middleware/log.global.ts`，就會在**每一次**換頁時執行，不用在頁面上指定。這一章用不到。
 
@@ -128,7 +128,7 @@ export default defineNuxtRouteMiddleware(() => {
 
 接著在登入頁隨便輸入一個暗號，例如「猜錯的暗號」，按登入。你進到管理頁了，也看得到刪除按鈕。
 
-這就是為什麼一開始說「只是示範」：middleware 只能決定**要不要顯示這一頁**。它沒辦法知道暗號對不對，因為暗號要是寫在 `app/` 裡，就會被打包進送到瀏覽器的程式碼，任何人都看得到。
+這就是為什麼一開始說「只是示範」：middleware 只能決定**要不要顯示這一頁**。它沒辦法知道暗號對不對，因為暗號要是寫在 `app/` 裡，就會被打包進送到瀏覽器的程式碼，任何人都看得到。另外，這一集用 `useCookie` 在瀏覽器寫入 cookie，瀏覽器裡的 JavaScript 也讀得到它；真實網站的登入憑證，會由伺服器設定 cookie 並加上 `httpOnly`，讓瀏覽器端的程式碼讀不到。
 
 而且就算 middleware 寫得再嚴格，有人用 `curl` 直接呼叫刪除的 API，根本不會經過任何頁面，middleware 完全管不到。
 

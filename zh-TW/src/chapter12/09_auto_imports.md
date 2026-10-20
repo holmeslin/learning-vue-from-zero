@@ -106,7 +106,7 @@ const { likes, like } = useLikes();
 - `composables/` 放 composable，也就是用到 `ref`、`computed` 等響應式 API 的 `use` 函式。
 - `utils/` 放其他工具函式和資料，例如 `getBook`。
 
-預設只有直接放在這兩個資料夾裡的檔案才算。如果放在子資料夾，例如 `composables/sub/useDeep.ts`，就不會自動匯入，要自己寫 import。
+預設只有直接放在這兩個資料夾裡的檔案才算。如果放在子資料夾，例如 `composables/sub/useDeep.ts`，就不會自動匯入，要自己寫 import。唯一的例外是子資料夾裡的 `index.ts`，例如 `composables/sub/index.ts`，它會被掃到。
 
 ### 它是怎麼做到的
 
@@ -131,7 +131,7 @@ export const BookCard:
 
 這些檔案是自動產生的，引號和分號的寫法和這本書的習慣不太一樣，看得懂就好。
 
-所以在 VS Code 裡把滑鼠移到 `useLikes` 上，一樣看得到它的型別；按住 Ctrl（Mac 是 ⌘）點它，也一樣會跳到 `composables/useLikes.ts`。
+所以在 VS Code 裡把滑鼠移到 `useLikes` 上，一樣看得到它的型別；按住 Ctrl（Mac 是 Command）點它，也一樣會跳到 `composables/useLikes.ts`。
 
 你也會發現 `useRoute` 來自 `#app/composables/router`，而不是 `vue-router`。這是 Nuxt 自己包過一層的版本，用法和第 9 章完全一樣。
 

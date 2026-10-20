@@ -40,7 +40,7 @@ setup 執行了
 我在伺服器上
 ```
 
-再看**瀏覽器的 Console**。在頁面上按 F12（Mac 按 ⌥⌘I）打開開發者工具，切到 Console 分頁，會看到：
+再看**瀏覽器的 Console**。在頁面上按 F12（Mac 按 Option+Command+I）打開開發者工具，切到 Console 分頁，會看到：
 
 ```text
 setup 執行了

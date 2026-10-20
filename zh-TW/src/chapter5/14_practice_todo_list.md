@@ -116,8 +116,7 @@ function handleAdd() {
 }
 
 function handleRemove(id) {
-  const index = todos.value.findIndex((todo) => todo.id === id);
-  todos.value.splice(index, 1);
+  todos.value = todos.value.filter((todo) => todo.id !== id);
 }
 
 function handleClearDone() {
@@ -167,7 +166,7 @@ function handleClearDone() {
 - 只有三個 `ref`：`todos`、`text`、`filter`。`remaining`、`hasDone`、`visibleTodos` 都是 `computed`，從 `todos` 和 `filter` 算出來，所以永遠不會和資料對不起來。
 - `nextId` 只用來產生不重複的 `id`，不會顯示在畫面上，所以是普通的 `let` 變數。
 - `FILTERS` 是不會變的常數，用普通的 `const` 陣列就好。篩選按鈕用 `v-for` 從它產生，不用寫三次。
-- 新增用 `push`，刪除用 `findIndex` 找到位置再 `splice`，都是直接改 `todos.value` 這個陣列；清除已完成用 `filter` 做一個新陣列放回去。第 5 集說過，兩種方式 Vue 都知道。
+- 新增用 `push`，直接改 `todos.value` 這個陣列；刪除和清除已完成都用 `filter` 做一個新陣列放回去。第 5 集說過，兩種方式 Vue 都知道。
 - 勾選的資料流：`TodoItem` 裡的勾選框 `v-model` 到 `done`，`done` 是 `defineModel` 給的 `ref`，改它會通知父元件，父元件的 `v-model:done="todo.done"` 再去改那筆待辦事項。`TodoItem` 自己從頭到尾沒有改 props。
 - `visibleTodos` 裡的事項，和 `todos` 裡的是同一批物件（第 2 章的參考），所以在「未完成」分類勾選一項，它的 `done` 改了，`remaining` 和 `visibleTodos` 都會重算，它就從畫面上消失了。
 - `:key="todo.id"`：這份清單會新增、刪除、篩選，正是第 4 章說的「一定要用資料本身的 id 當 `key`」的情況。
@@ -189,5 +188,5 @@ function handleClearDone() {
 
 - 這一章的觀念組合起來，已經可以做出完整的互動應用程式。
 - 設計時先決定資料的樣子，再決定需要哪些 `ref`；算得出來的用 `computed`，不要另外存。
-- 陣列可以直接 `push`、`splice`，也可以用 `filter` 做新陣列放回 `.value`。
+- 陣列可以直接 `push`，也可以用 `filter` 做新陣列放回 `.value`。
 - 父元件擁有資料，子元件用 `defineModel` 和事件通知父元件去改。

@@ -26,7 +26,7 @@ const count = ref(0);
 
 現在用第 12 章學過的方法看原始碼：在網址列輸入 `view-source:http://localhost:3000/counter`（或在頁面上按右鍵，選「檢視網頁原始碼」）。這裡顯示的是**伺服器送來的原始 HTML**，還沒經過任何 JavaScript 處理。
 
-原始碼很長，而且全部擠在同一行。按 Ctrl+F（Mac 按 ⌘F）搜尋「按了」，會找到這一段（下面幫你換行排好了）：
+原始碼很長，而且全部擠在同一行。按 Ctrl+F（Mac 按 Command+F）搜尋「按了」，會找到這一段（下面幫你換行排好了）：
 
 ```text
 <div id="__nuxt">
@@ -53,7 +53,7 @@ SSR 的好處：
 
 伺服器送來的 HTML 只是「長得像」計數器。HTML 本身不懂 `@click`，也不知道 `count` 是什麼。
 
-你可以實際看到這件事。在開發者工具裡按 Ctrl+Shift+P（Mac 按 ⌘⇧P），輸入「JavaScript」，選「停用 JavaScript」（Disable JavaScript），然後重新整理頁面：
+你可以實際看到這件事。在開發者工具裡按 Ctrl+Shift+P（Mac 按 Command+Shift+P），輸入「JavaScript」，選「停用 JavaScript」（Disable JavaScript），然後重新整理頁面：
 
 - 畫面照樣出現「計數器」「按了 0 次」和按鈕，因為這些都在 HTML 裡。
 - 按按鈕沒有任何反應，數字一直是 0。

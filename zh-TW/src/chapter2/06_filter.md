@@ -44,7 +44,7 @@ console.log(passed);
 
 `filter` 對每個東西呼叫 callback，callback 要回傳 `true` 或 `false`：回傳 `true` 的東西會被留下，`false` 的丟掉。留下來的組成一個新陣列，原陣列不變。
 
-`(score) => score >= 60` 就是一個「回傳布林值」的函式，這種函式常被叫做**條件**（predicate）。
+`(score) => score >= 60` 就是一個「回傳布林值」的函式，這種回傳布林值、用來判斷要不要留下的函式叫 predicate，中文常叫**判斷函式**。
 
 ### 結果可以比原本短，甚至是空的
 

@@ -14,7 +14,8 @@
 | --- | --- |
 | 200 | 成功 |
 | 400 | 你送來的資料有問題（Bad Request） |
-| 401 | 你沒有權限（Unauthorized） |
+| 401 | 你還沒登入，伺服器不知道你是誰（Unauthorized） |
+| 403 | 伺服器知道你是誰，但你沒有權限（Forbidden） |
 | 404 | 找不到 |
 | 500 | 伺服器自己出錯了 |
 
@@ -143,7 +144,7 @@ const name = ref("");
 const text = ref("");
 const errorMessage = ref("");
 
-function showError(err: unknown) {
+function showErrorMessage(err: unknown) {
   // $fetch 丟出的錯誤，伺服器回傳的 JSON 放在 data 裡
   const data = (err as { data?: { message?: string } }).data;
   errorMessage.value = data?.message ?? "發生錯誤，請稍後再試";
@@ -159,7 +160,7 @@ async function submit() {
     text.value = "";
     await refresh();
   } catch (err) {
-    showError(err);
+    showErrorMessage(err);
   }
 }
 
@@ -168,7 +169,7 @@ async function remove(id: string) {
   try {
     await $fetch(`/api/messages/${id}`, { method: "DELETE" });
   } catch (err) {
-    showError(err);
+    showErrorMessage(err);
   }
   await refresh();
 }

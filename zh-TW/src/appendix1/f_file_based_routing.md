@@ -235,7 +235,7 @@ src/pages/
 
 加了之後，`useRoute("/books/[id]")` 就有了型別。括號裡的字串是這個路由的**名字**，外掛用檔案路徑當名字。TypeScript 因此知道 `route.params` 裡有 `id`。
 
-故意打錯，把它改成 `useRoute("/book/[id]")`（少了一個 s），再執行 `npm run type-check`：
+故意打錯，把它改成 `useRoute("/book/[id]")`（少了一個 s），再執行 `npm run type-check`。你在終端機看到的會和第 10 章一樣，每個錯誤下面附一段標了 `~~~~` 的程式碼；這裡為了版面，改用一個錯誤一行的精簡格式，`(4,24)` 就是第 4 行第 24 個字：
 
 ```text
 src/pages/books/[id].vue(4,24): error TS2345: Argument of type '"/book/[id]"' is not assignable to parameter of type 'keyof RouteNamedMap | undefined'.

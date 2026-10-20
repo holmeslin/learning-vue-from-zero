@@ -75,7 +75,7 @@ base-layer/
 export default defineNuxtConfig({
   app: {
     head: {
-      htmlAttrs: { lang: "zh-Hant-TW" },
+      htmlAttrs: { lang: "zh-TW" },
     },
   },
 });
@@ -131,7 +131,7 @@ export default defineNuxtConfig({
 檢視網頁原始碼，最上面的 `<html>` 也帶著 Layer 裡設定的語言：
 
 ```text
-<html  lang="zh-Hant-TW">
+<html  lang="zh-TW">
 ```
 
 元件、composable、設定，全部從 Layer 來，而且一樣是自動匯入。

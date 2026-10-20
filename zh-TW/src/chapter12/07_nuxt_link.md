@@ -165,7 +165,7 @@ await navigateTo("/books", { redirectCode: 301 });
 </template>
 ```
 
-在 `<script setup>` 裡直接呼叫 `navigateTo`，前面加上 `await`（第 2 章學過，等它做完再往下）。用終端機看看伺服器的回應。`curl` 是一個在終端機裡送出網路請求的工具，Mac 和 Windows 10 以後都有內建，`-i` 表示把回應的開頭也印出來。Windows 的 PowerShell 裡 `curl` 是另一個指令的別名，要改打 `curl.exe -i`：
+在 `<script setup>` 裡直接呼叫 `navigateTo`，前面加上 `await`（第 2 章學過，等它做完再往下）。第 2 章說 `await` 要寫在 `async` 函式裡，但 `<script setup>` 本身允許最外層直接寫 `await`，不用再包一層 `async` 函式。用終端機看看伺服器的回應。`curl` 是一個在終端機裡送出網路請求的工具，Mac 和 Windows 10 以後都有內建，`-i` 表示把回應的開頭也印出來。Windows 的 PowerShell 裡 `curl` 是另一個指令的別名，要改打 `curl.exe -i`：
 
 ```bash
 curl -i http://localhost:3000/old-books

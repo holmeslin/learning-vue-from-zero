@@ -10,7 +10,7 @@
 
 在 VS Code 左邊的檔案清單，把滑鼠移到 `learning-vue` 上，點「新增檔案」的圖示，取名 `hello.js`。`.js` 是 JavaScript 檔案的副檔名，一定要加。
 
-在檔案裡打這一行，然後存檔（Windows 按 Ctrl+S，Mac 按 ⌘S）：
+在檔案裡打這一行，然後存檔（Windows 按 Ctrl+S，Mac 按 Command+S）：
 
 ```js
 console.log("哈囉，世界！");

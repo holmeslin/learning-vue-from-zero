@@ -22,6 +22,6 @@
 
 第 8 集起會用到一個新資料夾 `src/composables/`，到時候再建立就好。
 
-很多範例會用 `console.log` 印出訊息。要看這些訊息，請打開瀏覽器的開發者工具（按 F12，Mac 按 ⌘⌥I），切到「Console」分頁。
+很多範例會用 `console.log` 印出訊息。要看這些訊息，請打開瀏覽器的開發者工具（按 F12，Mac 按 Option+Command+I），切到「Console」分頁。
 
 第 6 集和第 9 集會連到網路上的公開測試 API `jsonplaceholder.typicode.com` 抓資料，練習時電腦要連得上網路。
