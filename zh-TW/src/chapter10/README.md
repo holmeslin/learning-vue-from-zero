@@ -11,4 +11,10 @@
 
 這一章不是型別理論課，不會教完 TypeScript 的所有功能。目標很實際：讓你看得懂、寫得出 Vue 專案裡常見的 TypeScript。第 11 章之後的範例，以及整個第二部的 Nuxt，都會用 TypeScript 來寫。
 
-學這一章要有第 4～8 章的基礎（元件、響應式、模板 ref、`provide` / `inject`、Pinia）。第 2 集會用 `npm create vue@latest` 建立一個新的 TypeScript 專案，整章都在這個專案裡練習。
+學這一章要有第 4～8 章的基礎（元件、響應式、模板 ref、`provide` / `inject`、Pinia）。
+
+## 準備環境
+
+第 4～9 章用的 `hello-vue` 是 JavaScript 專案，這一章不沿用它。第 2 集會用 `npm create vue@latest` 另外建立一個 TypeScript 專案 `hello-ts`，整章都在這個專案裡練習。`hello-vue` 留著就好，不用刪，也不用改成 TypeScript。
+
+TypeScript 本身由 create-vue 幫你裝好，`package.json` 裡寫的是 `"typescript": "~6.0.0"`，也就是 6.0 版。不要自己把它升級到 7：TypeScript 7 會讓檢查型別用的 `vue-tsc` 無法執行。以後如果需要自己安裝 TypeScript，版本一律寫 `typescript@~6.0`。

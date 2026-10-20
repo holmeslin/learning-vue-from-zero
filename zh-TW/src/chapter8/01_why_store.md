@@ -83,7 +83,7 @@ const products = ["鍵盤", "滑鼠", "螢幕"];
 
 **只有元件拿得到。** `inject` 只能在元件的 `<script setup>` 裡呼叫，而且只有 `provide` 那個元件底下的元件拿得到。如果是一個普通的 `.js` 檔想知道「使用者登入了沒」，就沒辦法用 `inject`。後面第 9 章學 Vue Router 的導覽守衛時，就可能遇到這種情況。
 
-**名字是字串，打錯不會馬上發現。** 把 `inject("cartCount")` 打成 `inject("cartCont")`，程式不會出錯停下來，只是拿到 `undefined`，主控台多一行警告，畫面上的數字變成空白。資料一多，這種字串名字會越來越難管。
+**名字是字串，打錯不會馬上發現。** 把 `inject("cartCount")` 打成 `inject("cartCont")`，程式不會出錯停下來，只是拿到 `undefined`，Console 多一行警告，畫面上的數字變成空白。資料一多，這種字串名字會越來越難管。
 
 ### store：把共用的資料搬出元件
 

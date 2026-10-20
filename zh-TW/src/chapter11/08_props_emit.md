@@ -154,7 +154,7 @@ const rating = defineModel<number>({ required: true });
 
 <template>
   <button v-for="n in 5" :key="n" @click="rating = n">
-    {{ n <= rating ? "★" : "☆" }}
+    {{ n <= rating ? '★' : '☆' }}
   </button>
 </template>
 ```

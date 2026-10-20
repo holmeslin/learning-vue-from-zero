@@ -143,7 +143,7 @@ export function withSetup<T>(composable: () => T): [T, App] {
 
 這段的細節不用完全看懂，知道它在做什麼就好：
 
-- `createApp({ setup() { ... } })` 建立一個 app，它的根元件只有 setup，沒有模板。第 4 章在 `main.ts` 裡看過 `createApp(App)`，這裡只是把 `App` 換成一個當場寫的元件。`setup()` 就是 `<script setup>` 背後真正執行的函式，在這裡面呼叫 composable，生命週期 Hook 就有元件可以掛了。
+- `createApp({ setup() { ... } })` 建立一個 app，它的根元件只有 setup，沒有模板。第 4 章在 `main.js` 裡看過 `createApp(App)`，這裡只是把 `App` 換成一個當場寫的元件。`setup()` 就是 `<script setup>` 背後真正執行的函式，在這裡面呼叫 composable，生命週期 Hook 就有元件可以掛了。
 - `return () => {}` 是這個元件的「畫面」，什麼都不畫。這種寫法叫 render function，附錄一會介紹，現在先照抄。
 - `app.mount(document.createElement("div"))`：掛到一個新建的 `<div>` 上，`onMounted` 就會執行。
 - 回傳 `[composable 的結果, app]`。`<T>` 是第 10 章學的泛型：composable 回傳什麼型別，`result` 就是什麼型別。`result as T` 告訴 TypeScript「這時候 `result` 一定已經有值了」。

@@ -121,7 +121,7 @@ export default defineEventHandler(async (event) => {
   const message = messages.find((message) => message.id === id);
 
   if (!message) {
-    throw createError({ statusCode: 404, message: "找不到這則留言" });
+    throw createError({ status: 404, message: "找不到這則留言" });
   }
 
   message.likes += 1;
@@ -159,7 +159,7 @@ async function like(id: string) {
 </li>
 ```
 
-完成後我實際試過：`.data/kv/messages` 裡先放一則沒有 `likes` 的舊留言，首頁顯示「讚 0」；用 `curl` 對它按兩次讚：
+實際試一次：`.data/kv/messages` 裡先放一則沒有 `likes` 的舊留言，首頁顯示「讚 0」；用 `curl` 對它按兩次讚：
 
 ```bash
 curl -X POST localhost:3000/api/messages/old-1/like

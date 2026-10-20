@@ -33,35 +33,16 @@ function handleBirthday() {
 
 ### 用它回傳的那一個
 
-第 2 章第 11 集預告過：`reactive` 回傳的不是你交給它的那個物件。把 `src/App.vue` 換成：
+第 2 章第 11 集預告過：`reactive` 回傳的不是你交給它的那個物件。
 
-```vue
-<script setup>
-import { reactive } from "vue";
-
+```js
 const original = { name: "小明", age: 20 };
 const user = reactive(original);
 
-console.log(user === original);
-
-function handleBirthday() {
-  original.age++;
-}
-</script>
-
-<template>
-  <p>{{ user.name }} 今年 {{ user.age }} 歲</p>
-  <button @click="handleBirthday">過生日</button>
-</template>
+console.log(user === original); // false
 ```
 
-Console 印出：
-
-```text
-false
-```
-
-`user` 是代理人，`original` 是原本的物件，兩者不是同一個。點「過生日」，改的是 `original`，繞過了代理人，畫面停在 20 歲，和上一集 `ref` 的情況一樣。所以交給 `reactive` 之後，**一律用它回傳的那一個**，原本的變數就別再碰了。實務上通常直接寫成 `reactive({ ... })`，根本不留原本的變數，也就不會用錯。
+`user` 是代理人，`original` 是原本的物件，就和上一集 `ref` 裡的陣列一樣。透過 `original` 去改，會繞過代理人，畫面不會更新。所以交給 `reactive` 之後，**一律用它回傳的那一個**。實務上通常直接寫成 `reactive({ ... })`，根本不留原本的變數，也就不會用錯。
 
 少寫 `.value` 看起來比較方便，但 `reactive` 有幾個陷阱，前兩個都和第 2 章第 11 集講的「物件是參考」有關。
 
@@ -80,7 +61,7 @@ function handleReset() {
 
 `user` 是 `const`，不能重新指定。就算你改成 `let`，畫面也不會更新。
 
-回想第 2 章的比喻：變數像一張標籤，貼在某個物件上。`user = 新物件` 只是把標籤撕下來，貼到另一個物件上。Vue 的代理人守的是**原本那個物件**，你換的是變數這張標籤，代理人完全不知道，就跟第 2 集的普通變數一樣，沒有人通知 Vue。
+回想第 2 章的比喻：變數像一張寫了地址的紙條。`user = 新物件` 只是把紙條上的地址改成另一個物件。Vue 的代理人守的是**原本那個物件**，你換的只是紙條，代理人完全不知道，就跟第 2 集的普通變數一樣，沒有人通知 Vue。
 
 `ref` 就沒有這個問題，因為你換的是盒子裡的 `value`，而盒子的 `.value` 是有人守著的：
 
@@ -147,36 +128,19 @@ const count = reactive(0);
 
 ### `reactive` 裡的 `ref` 會自動解包
 
-把 `ref` 放進 `reactive` 物件當屬性時，透過物件去讀，Vue 會自動打開盒子，不用寫 `.value`。把 `src/App.vue` 換成：
+把 `ref` 放進 `reactive` 物件當屬性，透過物件去讀寫時，Vue 會自動打開盒子：
 
-```vue
-<script setup>
-import { ref, reactive } from "vue";
-
+```js
 const count = ref(0);
-const state = reactive({ count });
+const state = reactive({ count: count });
 
-function handleClick() {
-  state.count++;
-  console.log(state.count, count.value);
-}
-</script>
-
-<template>
-  <button @click="handleClick">加一</button>
-</template>
+state.count++; // 不用寫 .value
+console.log(state.count, count.value); // 1 1
 ```
 
-點兩次按鈕，Console 印出：
+`state.count` 直接就是數字，而且改的就是 `count` 盒子裡的值，兩邊是連在一起的。第 4 集說過「包在普通物件裡的 `ref` 不會自動解包」，差別在於 `reactive` 有代理人幫你打開盒子，普通物件沒有。
 
-```text
-1 1
-2 2
-```
-
-`state.count` 直接就是數字，`state.count++` 也不用 `.value`。而且改的就是 `count` 這個盒子裡的值，所以 `count.value` 跟著變，兩邊是連在一起的。第 4 集說過「包在普通物件裡的 `ref` 不會自動解包」，差別就在這裡：外面包的是 `reactive`，代理人會幫你打開盒子；普通物件沒有代理人，就不會。
-
-這個規則現在用不太到，但第 8 章學 Pinia 時會再遇到，到時候記得「`ref` 放進 `reactive` 裡，讀的時候不用 `.value`」就好。
+這個規則現在用不太到，但第 8 章的 Pinia 就靠它運作，到時候記得「`ref` 放進 `reactive` 裡，讀的時候不用 `.value`」就好。
 
 ### 那該用哪一個？
 

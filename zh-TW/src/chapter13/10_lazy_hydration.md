@@ -46,10 +46,10 @@ onMounted(() => {
 
 重點是最後一行：元件名稱加上 `Lazy` 前綴，再加上 `hydrate-on-visible` 屬性。
 
-打開 `http://localhost:3000/long`，打開主控台和「網路」分頁（篩選 `LikeButton`）：
+打開 <http://localhost:3000/long>，打開 Console 和「網路」分頁（篩選 `LikeButton`）：
 
-- 剛打開時，主控台沒有「LikeButton 可以按了」，網路分頁也沒有 `LikeButton.vue`。
-- 往下捲到按鈕出現，主控台印出 `LikeButton 可以按了`，網路分頁出現 `LikeButton.vue`。
+- 剛打開時，Console 沒有「LikeButton 可以按了」，網路分頁也沒有 `LikeButton.vue`。
+- 往下捲到按鈕出現，Console 印出 `LikeButton 可以按了`，網路分頁出現 `LikeButton.vue`。
 
 再看「檢視網頁原始碼」，搜尋「讚」：
 
@@ -100,7 +100,7 @@ function onHydrated() {
 </template>
 ```
 
-打開 `http://localhost:3000/long-events`，把滑鼠移到按鈕上，主控台會印出：
+打開 <http://localhost:3000/long-events>，把滑鼠移到按鈕上，Console 會印出：
 
 ```text
 LikeButton 可以按了

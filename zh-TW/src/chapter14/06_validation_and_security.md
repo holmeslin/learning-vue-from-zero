@@ -75,20 +75,20 @@ export function validateMessage(rawName: unknown, rawText: unknown) {
   const text = typeof rawText === "string" ? rawText.trim() : "";
 
   if (name === "") {
-    throw createError({ statusCode: 400, message: "請輸入名字" });
+    throw createError({ status: 400, message: "請輸入名字" });
   }
   if (name.length > maxNameLength) {
     throw createError({
-      statusCode: 400,
+      status: 400,
       message: `名字最多 ${maxNameLength} 個字`,
     });
   }
   if (text === "") {
-    throw createError({ statusCode: 400, message: "請輸入留言內容" });
+    throw createError({ status: 400, message: "請輸入留言內容" });
   }
   if (text.length > maxTextLength) {
     throw createError({
-      statusCode: 400,
+      status: 400,
       message: `留言最多 ${maxTextLength} 個字`,
     });
   }
@@ -206,7 +206,7 @@ curl -X POST localhost:3000/api/messages \
 
 **前端的檢查是給使用者的體貼，伺服器的檢查才是真正的防線。兩個都要有。**
 
-> 這裡的驗證是手寫的 `if`。欄位一多，實務上常用 h3 提供的 `readValidatedBody` 搭配 zod 這類驗證函式庫，用一份「規格」描述資料該長什麼樣子，讀資料和驗證一次完成。原理和這一集完全一樣：在伺服器上檢查。我們只有兩個欄位，就不多裝一個套件了。
+> 這裡的驗證是手寫的 `if`。欄位一多，實務上常用 h3 提供的 `readValidatedBody` 搭配 zod 這類驗證函式庫，用一份「規格」描述資料該長什麼樣子，讀資料和驗證一次完成。原理和這一集完全一樣：在伺服器上檢查。留言板只有兩個欄位，就不多裝一個套件了。
 
 ### 顯示時：不要用 `v-html`
 
@@ -228,7 +228,7 @@ curl -X POST localhost:3000/api/messages \
 <li v-for="message in messages" :key="message.id" v-html="message.text" />
 ```
 
-有人留言 `<img src=x onerror="document.title=1234">`，每個打開這一頁的人，瀏覽器都會執行 `onerror` 裡的程式。我實際試過，分頁的標題真的變成了 1234。這裡只是改標題，換成壞人寫的程式，就可能偷走使用者的資料。
+有人留言 `<img src=x onerror="document.title=1234">`，每個打開這一頁的人，瀏覽器都會執行 `onerror` 裡的程式。實際試過，分頁的標題真的變成了 1234。這裡只是改標題，換成壞人寫的程式，就可能偷走使用者的資料。
 
 所以規則很簡單：**使用者輸入的內容，一律用 `{{ }}` 顯示，不要用 `v-html`。**
 
@@ -236,6 +236,6 @@ curl -X POST localhost:3000/api/messages \
 
 - API 是公開的網址，任何人都能不經過你的網頁直接呼叫。
 - 收到的資料先當成 `unknown`：確認型別、`trim()` 去空白、檢查是不是空的、檢查長度上限，通過了才使用。
-- 驗證失敗就 `throw createError({ statusCode: 400, ... })`。
+- 驗證失敗就 `throw createError({ status: 400, ... })`。
 - 前端的 `maxlength` 只是給使用者的提示，伺服器一定要再檢查一次。
 - Vue 的 `{{ }}` 會自動跳脫 HTML；使用者的輸入不要用 `v-html` 顯示。

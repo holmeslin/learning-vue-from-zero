@@ -38,6 +38,7 @@
 - 終端機指令用 `bash`，執行結果用 `text`。
 - 這些語言的區塊會在 CI 檢查語法：`js` / `ts` / `jsx` 用 esbuild，`vue` 用 `@vue/compiler-sfc`。語法不完整的片段、或故意寫錯來示範錯誤訊息的區塊，在語言後面加 `,ignore`，例如 ` ```js,ignore `。語法正確、只是執行或建置時才會出錯的示範可以不加。
 - 範例裡的變數名稱用英文，字串內容和註解用繁體中文。
+- 自己寫的 JS / TS 用雙引號加分號；模板（`<template>` 裡的屬性值與 `{{ }}`）裡的字串用單引號。照抄 create-vue / create-nuxt 產生的檔案時保留原樣（單引號、無分號）。
 - 每行不超過 80 個字元，避免網頁上出現橫向捲軸。
 - 語法檢查抓不到執行時的錯。新寫的範例要放進用 `npm create vue@latest`（第二部用 `npm create nuxt@latest`）建立的真專案跑過，確認畫面和書上說的一樣。
 - 版本以 `OUTLINE.md` 鎖定的為準，不要用還沒正式發布的 API。
@@ -110,6 +111,7 @@
 | reactivity / reactive | 響應式 | 反應式 |
 | directive | 指令 | |
 | template（Vue 的模板） | 模板 | 範本（避免和「樣板字面值」混淆） |
+| template（專案範本，例如 create-nuxt 的 minimal） | 範本 | 模板 |
 | lifecycle | 生命週期 | 生命周期 |
 | watch（動作） | 監聽 | 偵聽、侦听 |
 | mount | 掛載 | |
@@ -119,5 +121,7 @@
 | server-side rendering | 伺服器端渲染（SSR） | 服務端渲染 |
 | hydration | hydration（保留英文，第一次出現時解釋） | 水合、注水 |
 | auto-import | 自動匯入 | 自動導入 |
+| shortcut（keyboard） | 快速鍵 | 快捷鍵 |
+| console（瀏覽器開發者工具的分頁） | Console（第一次出現註明「主控台」） | 控制台 |
 
 寫完可以用 zhtw 之類的工具再掃一次，抓漏網的中國大陸用語。zhtw 會建議把「模板」改成「範本」，本書刻意用「模板」（見術語表），這個警告可以忽略。

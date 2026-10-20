@@ -29,7 +29,7 @@
 
 ## 準備環境
 
-這一章的範例都放在你第 4 章建立的專案裡，不用安裝新的套件。啟動開發伺服器：
+這一章的範例都放在你第 4 章建立的 `hello-vue` 專案裡，不用安裝新的套件。啟動開發伺服器：
 
 ```bash
 npm run dev
@@ -37,4 +37,4 @@ npm run dev
 
 每一集通常會先建立一兩個 `src/components/` 底下的元件，再把 `src/App.vue` 整個換成書上的程式碼，存檔後看瀏覽器的變化。第 1 集會用到第 6 章建立過的 `src/composables/` 資料夾。
 
-有些範例會用 `console.log` 印東西，或是要你看元件產生的 HTML。按 F12（Mac 按 ⌘⌥I）打開瀏覽器的開發者工具：印出的訊息在 Console 分頁，HTML 在 Elements 分頁。
+有些範例會用 `console.log` 印東西，或是要你看元件產生的 HTML。按 F12（Mac 按 ⌘⌥I）打開瀏覽器的開發者工具：印出的訊息在 Console 分頁，HTML 在 Elements 分頁（第 3 章在網頁上按右鍵選「檢查」打開的，就是這個分頁）。

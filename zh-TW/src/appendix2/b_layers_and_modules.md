@@ -33,17 +33,17 @@
 | `@nuxt/eslint` | ESLint 設定（附錄一） |
 | `@nuxt/test-utils` | 在 Vitest 裡測試 Nuxt 元件 |
 
-### 用 `nuxi module add` 安裝
+### 用 `nuxt module add` 安裝
 
 模組頁面上會寫安裝指令，格式都一樣：
 
 ```bash
-npx nuxi module add <模組名稱>
+npx nuxt module add <模組名稱>
 ```
 
 模組名稱是 nuxt.com/modules 上那個簡短的名字，例如 `pinia`、`image`、`content`。這個指令會做兩件事：用 npm 安裝套件，然後把它加進 `nuxt.config.ts` 的 `modules` 陣列。
 
-如果你比較想自己動手，也可以先 `npm install`，再手動把套件名稱加進 `modules`，效果一樣。只是有些模組需要額外的設定或另一個套件（像上一集的 `@pinia/nuxt` 還要裝 `pinia`），用 `nuxi module add` 比較不會漏。
+如果你比較想自己動手，也可以先 `npm install`，再手動把套件名稱加進 `modules`，效果一樣。只是有些模組需要額外的設定或另一個套件（像上一集的 `@pinia/nuxt` 還要裝 `pinia`），用 `nuxt module add` 比較不會漏。
 
 ### Layers：共用一整套東西
 
@@ -57,7 +57,7 @@ Nuxt 的解法是 **Layer**：把共用的東西放在一個資料夾，結構�
 npm create nuxt@latest my-site
 ```
 
-然後在 `my-site` **旁邊**（不是裡面）建立一個 `base-layer` 資料夾，放這三個檔案：
+範本選 minimal，其他問題的回答和第 12 章一樣。然後在 `my-site` **旁邊**（不是裡面）建立一個 `base-layer` 資料夾，放這三個檔案：
 
 ```text
 base-layer/
@@ -121,7 +121,7 @@ export default defineNuxtConfig({
 </template>
 ```
 
-`my-site` 裡面根本沒有 `SiteFooter.vue` 和 `useFormatPrice.ts`，但在 `my-site` 執行 `npm run dev`，打開 `http://localhost:3000`，畫面會出現：
+`my-site` 裡面根本沒有 `SiteFooter.vue` 和 `useFormatPrice.ts`，但在 `my-site` 執行 `npm run dev`，打開 <http://localhost:3000>，畫面會出現：
 
 ```text
 鍵盤：NT$ 1,200
@@ -152,6 +152,6 @@ Layer 能做的事還很多，例如共用頁面、layouts、server API。等你
 
 - 模組是寫給 Nuxt 的套件，會在啟動與建置時改變 Nuxt 的行為，例如註冊外掛、加自動匯入。
 - 到 nuxt.com/modules 找模組，挑支援 Nuxt 4、最近有更新的。
-- `npx nuxi module add <名稱>` 會安裝套件並加進 `nuxt.config.ts` 的 `modules`。
+- `npx nuxt module add <名稱>` 會安裝套件並加進 `nuxt.config.ts` 的 `modules`。
 - Layer 是一個結構和 Nuxt 專案一樣的資料夾，用 `extends` 疊上來，就能共用設定、元件和 composable。
 - 專案自己的檔案會覆蓋 Layer 裡同名的檔案；`layers/` 資料夾裡的 Layer 會自動載入。

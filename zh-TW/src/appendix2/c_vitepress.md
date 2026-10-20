@@ -71,7 +71,7 @@ docs/
 npm run docs:dev
 ```
 
-打開 `http://localhost:5173`，就會看到一個有首頁、導覽列和深色模式切換的文件網站。
+打開 <http://localhost:5173>，就會看到一個有首頁、導覽列和深色模式切換的文件網站。
 
 ### 在 Markdown 裡寫 Vue
 

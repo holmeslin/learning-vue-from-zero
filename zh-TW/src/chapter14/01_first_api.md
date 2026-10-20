@@ -17,7 +17,7 @@ export default defineEventHandler(() => {
 });
 ```
 
-存檔後，用瀏覽器打開 `http://localhost:3000/api/hello`，會看到：
+存檔後，用瀏覽器打開 <http://localhost:3000/api/hello>，會看到：
 
 ```text
 {
@@ -58,7 +58,7 @@ export default defineEventHandler(() => {
 });
 ```
 
-打開 `http://localhost:3000/api/time`：
+打開 <http://localhost:3000/api/time>：
 
 ```text
 {
@@ -72,7 +72,7 @@ export default defineEventHandler(() => {
 
 ### 用 `curl` 呼叫 API
 
-除了瀏覽器，也可以在終端機用 `curl` 這個工具發請求。之後要送資料、測試錯誤情況時，用 `curl` 會比瀏覽器方便。開一個**新的**終端機視窗（原本那個還在跑 `npm run dev`），輸入：
+除了瀏覽器，也可以用第 12 章看過的 `curl` 在終端機發請求。之後要送資料、測試錯誤情況時，用 `curl` 會比瀏覽器方便。開一個**新的**終端機視窗（原本那個還在跑 `npm run dev`），輸入：
 
 ```bash
 curl localhost:3000/api/hello
@@ -101,7 +101,7 @@ const { data } = await useFetch("/api/hello");
 </template>
 ```
 
-打開 `http://localhost:3000/hello`，畫面上會出現「哈囉，這是伺服器回傳的資料」。
+打開 <http://localhost:3000/hello>，畫面上會出現「哈囉，這是伺服器回傳的資料」。
 
 網址只要寫 `/api/hello`，不用寫 `http://localhost:3000`，因為頁面和 API 在同一個網站上。
 

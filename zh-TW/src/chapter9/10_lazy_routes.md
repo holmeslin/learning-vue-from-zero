@@ -92,7 +92,7 @@ export default router;
 component: () => import("../views/AboutView.vue"),
 ```
 
-`() => import(...)` 是箭頭函式，呼叫它的時候才去載入那個檔案。這種寫在程式中間、用到才執行的 `import()` 叫**動態匯入**（dynamic import），它回傳的是 Promise（第 2 章學過），檔案下載完才會完成。
+`() => import(...)` 是箭頭函式，呼叫它的時候才去載入那個檔案。裡面的 `import()` 就是第 7 章非同步元件用過的動態 `import`（dynamic import），它回傳 Promise，檔案下載完才會完成。
 
 Vue Router 看到 `component` 是函式，就知道「等真的要顯示這一頁時，再呼叫它去下載」。下載完之後會記起來，第二次進同一頁就不用再下載。
 

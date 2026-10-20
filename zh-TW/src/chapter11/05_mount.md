@@ -56,7 +56,7 @@ test("顯示商品名稱與價格", () => {
 ```
 
 - `import { mount } from "@vue/test-utils"`：`mount` 來自 Vue Test Utils。
-- `mount(ProductCard, { props: { ... } })`：把 `ProductCard` 掛載起來。第 4 章在 `main.ts` 裡用 `createApp(App).mount("#app")` 把整個網站掛到網頁上，`mount` 做的是類似的事，只是掛在 jsdom 的假網頁裡，而且只掛這一個元件。第二個參數的 `props` 就是你在模板裡寫 `<ProductCard name="機械鍵盤" :price="2490" />` 時傳的東西。
+- `mount(ProductCard, { props: { ... } })`：把 `ProductCard` 掛載起來。第 4 章看過 `main.js` 用 `createApp(App).mount("#app")` 把整個網站掛到網頁上（TypeScript 專案裡這個檔案叫 `main.ts`），`mount` 做的是類似的事，只是掛在 jsdom 的假網頁裡，而且只掛這一個元件。第二個參數的 `props` 就是你在模板裡寫 `<ProductCard name="機械鍵盤" :price="2490" />` 時傳的東西。
 - `mount` 回傳一個 **wrapper**（包裝物件），它把掛載好的元件包起來，提供一堆方便測試的方法。習慣上變數就叫 `wrapper`。
 - `wrapper.text()`：元件渲染出來的所有文字，HTML 標籤都去掉。
 - `wrapper.html()`：元件渲染出來的 HTML，用來看「畫面到底長什麼樣子」。

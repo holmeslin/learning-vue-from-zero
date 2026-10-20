@@ -120,6 +120,7 @@ function addTodo(text: string) {
 
 - `ref<Todo[]>([])`：一個 `Todo` 陣列，現在是空的。
 - `ref<number | null>(null)`：現在是 `null`，之後會放數字。只寫 `ref(null)` 的話，TypeScript 會以為它永遠是 `null`。
+- `Date.now()` 回傳現在的時間（從 1970 年起算的毫秒數），每次都不一樣，這裡拿來當簡單的 `id`。
 
 標了型別之後，放進去的東西就會被檢查。例如 `push` 時少了 `done`（下面的錯誤訊息省略了開頭的檔案位置）：
 

@@ -29,13 +29,13 @@ const cart = useCartStore();
 測這個元件時有兩個麻煩：
 
 1. 要先讓購物車裡有東西，畫面才有東西可以檢查。用真的 store 的話，得先呼叫好幾次 `addItem`。
-2. 按「清空」時，我們想確認的是「元件有呼叫 `clear`」。`clear` 做得對不對，上一集已經測過了，這裡不用再測一次。
+2. 按「清空」時，你想確認的是「元件有呼叫 `clear`」。`clear` 做得對不對，上一集已經測過了，這裡不用再測一次。
 
 `@pinia/testing` 就是為這兩件事做的。
 
 ### 安裝 `@pinia/testing`
 
-這個套件 create-vue 沒有幫你裝，要自己裝：
+這個套件 create-vue 沒有幫你裝，要自己裝。`-D` 表示把它記在第 2 集說的 `devDependencies`，因為它只在測試時用到：
 
 ```bash
 npm install -D @pinia/testing
@@ -103,7 +103,7 @@ test("按「清空」會呼叫 store 的 clear", async () => {
 - `expect(cart.clear).toHaveBeenCalledTimes(1)`：`clear` 被呼叫了一次。`createTestingPinia` 把 store 的每個 action 都換成了 `vi.fn` 做的假函式，所以可以用上兩集學的比較方式檢查。
 - `expect(cart.items).toHaveLength(1)`：購物車裡**還是有**那一項。因為 action 預設被換成「什麼都不做」的假函式，`clear` 原本的程式碼沒有執行。
 
-這正是我們要的：這個測試只檢查元件「有沒有在按下按鈕時呼叫 `clear`」，`clear` 本身的正確性交給上一集的 store 測試。
+這正是你要的：這個測試只檢查元件「有沒有在按下按鈕時呼叫 `clear`」，`clear` 本身的正確性交給上一集的 store 測試。
 
 ### 少了 `createSpy` 會怎樣
 

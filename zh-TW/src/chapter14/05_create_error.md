@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
 
   if (!body.name || !body.text) {
-    throw createError({ statusCode: 400, message: "名字和留言都要填" });
+    throw createError({ status: 400, message: "名字和留言都要填" });
   }
 
   const message: Message = {
@@ -60,7 +60,7 @@ export default defineEventHandler(async (event) => {
   const messages = await getMessages();
 
   if (!messages.some((message) => message.id === id)) {
-    throw createError({ statusCode: 404, message: "找不到這則留言" });
+    throw createError({ status: 404, message: "找不到這則留言" });
   }
 
   await saveMessages(messages.filter((message) => message.id !== id));
@@ -87,9 +87,9 @@ curl -X DELETE localhost:3000/api/messages/abc
 }
 ```
 
-你的錯誤訊息放在 `message` 裡。`statusMessage` 那一欄寫著 `Server Error`，看起來有點怪，那只是你沒有指定 `statusMessage` 時填上的預設文字，可以不用理它。真正要給使用者看的是 `message`。
+你的錯誤訊息放在 `message` 裡。你傳進去的是 `status`（第 12 章教過的名字），回應裡的欄位卻叫 `statusCode` 和 `statusMessage`，這是伺服器回傳錯誤的固定格式，兩邊指的是同一件事。`statusMessage` 那一欄寫著 `Server Error`，看起來有點怪，那只是你沒有指定 `statusText` 時填上的預設文字，可以不用理它。真正要給使用者看的是 `message`。
 
-> 為什麼不把中文寫在 `statusMessage`？它會被放進回應最前面的狀態列，那裡只適合放很短的英文。如果你這樣寫，終端機也會印出提醒：較長的錯誤訊息請用 `message`。
+> 為什麼不把中文寫在 `statusText`？它會被放進回應最前面的狀態列，那裡只適合放很短的英文。如果你這樣寫，終端機也會印出提醒：較長的錯誤訊息請用 `message`。
 
 ### 為什麼不直接 `throw new Error`
 
@@ -222,7 +222,7 @@ async function remove(id: string) {
 ## 重點整理
 
 - 狀態碼 4 開頭是請求的問題，5 開頭是伺服器的問題。
-- 在 API 裡用 `throw createError({ statusCode, message })` 回傳錯誤，訊息寫在 `message`。
+- 在 API 裡用 `throw createError({ status, message })` 回傳錯誤，訊息寫在 `message`。
 - 普通的 `throw new Error` 在正式環境只會回「Server Error」；要給使用者看的錯誤要用 `createError`。
 - `$fetch` 遇到錯誤會丟出來，用 `try` / `catch` 接住，伺服器的 JSON 在錯誤物件的 `data` 裡。
 - `useFetch` 不丟錯誤，而是放在回傳的 `error` 裡。

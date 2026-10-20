@@ -14,7 +14,7 @@
 
 ### 記住有沒有登入：auth store
 
-「有沒有登入」很多地方都要知道：導覽守衛、登入頁、帳號頁。這正是第 8 章 Pinia store 的用途。建立 `src/stores/auth.js`：
+「有沒有登入」很多地方都要知道：導覽守衛、登入頁、帳號頁。導覽守衛寫在 `src/router/index.js` 這個普通的 `.js` 檔裡，不在任何元件裡面，所以不能用 `inject`。這就是第 8 章第 1 集預告過的情況，正好用 Pinia store 解決。建立 `src/stores/auth.js`：
 
 ```js
 import { ref, computed } from "vue";
@@ -192,7 +192,7 @@ active Pinia. Are you trying to use a store before calling "app.use(pinia)"?
 
 （前兩行在 Console 裡其實是同一行，這裡為了排版拆開。）
 
-原因是 `main.js` 一開頭 `import router from "./router";` 的時候，這個檔案最上面的程式碼就執行了，但這時候 `app.use(createPinia())` 還沒執行，store 還不能用。寫在守衛函式裡面，要等到真的換頁時才會執行，那時候 Pinia 已經裝好了。
+原因是 `main.js` 一開頭 `import router from "./router";` 的時候，這個檔案最上面的程式碼就執行了，但這時候 `app.use(createPinia())` 還沒執行，store 還不能用。寫在守衛函式裡面，要等到真的換頁時才會執行，那時候 Pinia 已經裝好了。這和第 8 章「多個 store 互相使用」那一集遇到的是同一個問題，規則也一樣：`useXxxStore()` 不要寫在檔案最外層。
 
 ### 舊教學裡的 `next`
 

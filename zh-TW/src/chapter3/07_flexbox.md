@@ -192,7 +192,7 @@ Flexbox 要設定在**父元素**上。建立 `index.html`：
 }
 ```
 
-這裡用了兩層 Flexbox：外層的 `.navbar` 把 logo 推到左邊、連結推到右邊，內層的 `.links` 把三個連結排成一列。Flexbox 可以一層疊一層，這是做版面的基本手法。
+`text-decoration: none` 是拿掉連結預設的底線。這裡用了兩層 Flexbox：外層的 `.navbar` 把 logo 推到左邊、連結推到右邊，內層的 `.links` 把三個連結排成一列。Flexbox 可以一層疊一層，這是做版面的基本手法。
 
 試著把它放進一個完整的 HTML 檔案，再改改數值，看看每個屬性造成什麼變化。
 

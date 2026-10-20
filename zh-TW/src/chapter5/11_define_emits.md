@@ -42,7 +42,7 @@ const likes = ref(0);
 </template>
 ```
 
-`defineProps` 回傳一個物件，裡面就是收到的所有 props，存進 `props` 之後，在 `<script setup>` 裡就能用 `props.count` 讀到它。
+第 4 章說過，把 `defineProps` 的回傳值存進 `props`，就能在 `<script setup>` 裡用 `props.count` 讀到它。
 
 點按鈕，數字不會變，Console 出現一個警告：
 
@@ -155,7 +155,7 @@ function handleAdd(name) {
       @add="handleAdd"
     />
   </ul>
-  <p>購物車：{{ cart.join("、") }}</p>
+  <p>購物車：{{ cart.join('、') }}</p>
 </template>
 ```
 

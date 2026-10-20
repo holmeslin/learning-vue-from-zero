@@ -77,6 +77,8 @@ const count = ref(0);
 2. 第二個是屬性物件。事件寫成 `on` 加上大寫開頭的事件名稱，所以 `@click` 變成 `onClick`。
 3. 第三個是內容：一段文字，或是由 `h()` 組成的陣列（代表多個子元素）。
 
+第 11 章測試 composable 時寫的 `withSetup`，裡面的 `setup()` 最後 `return () => {}`，就是同一種寫法：回傳一個什麼都不畫的 render function，所以那個元件不需要模板。
+
 ### 什麼時候 render function 比模板方便
 
 模板的標籤名稱是寫死的。假設你想做一個 `<Heading>` 元件，依照 `level` 決定要渲染 `<h1>` 到 `<h6>` 的哪一個，用模板就得寫六個 `v-if`。用 `h()` 只要一行。新增 `src/components/Heading.js`：

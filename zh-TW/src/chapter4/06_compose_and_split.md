@@ -127,7 +127,7 @@ App
 
 ### 常見的錯
 
-**忘了 `import`**：直接寫 `<AppFooter />` 卻沒有匯入，畫面上那一塊不會出現，瀏覽器的主控台會有一行黃色的警告：
+**忘了 `import`**：直接寫 `<AppFooter />` 卻沒有匯入，畫面上那一塊不會出現，瀏覽器的 Console 會有一行黃色的警告：
 
 ```text
 [Vue warn]: Failed to resolve component: AppFooter

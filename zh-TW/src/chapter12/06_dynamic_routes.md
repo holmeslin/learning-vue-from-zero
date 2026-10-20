@@ -43,10 +43,10 @@ const book = getBook(route.params.id);
 Nuxt 的型別檢查指令是 `npx nuxt typecheck`，但它需要你先安裝 `vue-tsc` 和 `typescript`：
 
 ```bash
-npm install -D vue-tsc typescript@~6.0.0
+npm install -D vue-tsc typescript@~6.0
 ```
 
-`-D` 表示這兩個是開發時才用的套件。`typescript@~6.0.0` 指定裝 6.0 版，和第 10 章 create-vue 幫你裝的一樣。不指定版本的話會裝到最新的 TypeScript 7，目前的 `vue-tsc` 還不支援它，執行時會出錯。
+`-D` 表示這兩個是開發時才用的套件。`typescript@~6.0` 指定裝 6.0 版，和第 10 章 create-vue 幫你裝的一樣。不指定版本的話會裝到最新的 TypeScript 7，目前的 `vue-tsc` 還不支援它，執行時會出錯。
 
 裝好之後執行：
 
@@ -121,5 +121,5 @@ Nuxt 的 `<NuxtPage />` 預設不會這樣：只要網址裡的參數變了，�
 - 檔名用中括號包起來，例如 `[id].vue`，就是動態路由，等於第 9 章的 `:id`。
 - 網址那一段的值放在 `useRoute().params.id`，而且永遠是字串。
 - `route.params.id` 的型別是 `string | string[] | undefined`，要先用 `typeof` 縮小成 `string`。
-- `npm run dev` 和 `npm run build` 不檢查型別，要用 `npx nuxt typecheck`，並先安裝 `vue-tsc` 和 `typescript@~6.0.0`。
+- `npm run dev` 和 `npm run build` 不檢查型別，要用 `npx nuxt typecheck`，並先安裝 `vue-tsc` 和 `typescript@~6.0`。
 - 在 Nuxt 裡換到不同的 `id` 時，頁面元件會重新建立。

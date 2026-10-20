@@ -79,9 +79,11 @@ app.mount("#app");
 
 順序很重要：`app.use()` 一定要寫在 `app.mount()` 前面。
 
+如果你在第 7 章已經把這個檔案拆成兩步、加了 `app.provide` 或 `app.config.errorHandler`，那些留著就好，只要補上 `import { createPinia }` 和 `app.use(createPinia())` 這兩行。
+
 ### 忘了 `app.use()` 會怎樣
 
-如果忘了加 `app.use(createPinia())`，下一集開始用 store 時，畫面會一片空白，瀏覽器的主控台（Console）會出現紅字。錯誤訊息的開頭是這段（太長的地方換了行）：
+如果忘了加 `app.use(createPinia())`，下一集開始用 store 時，畫面會一片空白，瀏覽器的 Console 會出現紅字。錯誤訊息的開頭是這段（太長的地方換了行）：
 
 ```text
 [🍍]: "getActivePinia()" was called but there was no active Pinia.

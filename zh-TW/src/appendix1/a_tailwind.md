@@ -103,7 +103,7 @@ const added = ref(false);
       :class="added ? 'bg-gray-400' : 'bg-emerald-600 hover:bg-emerald-700'"
       @click="added = !added"
     >
-      {{ added ? "已加入" : "加入購物車" }}
+      {{ added ? '已加入' : '加入購物車' }}
     </button>
   </main>
 </template>

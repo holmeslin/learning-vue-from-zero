@@ -22,7 +22,7 @@
 
 ### 自己寫的元件：`components/`
 
-書籍列表的每一本書，現在只是一行文字。我們把它做成一個卡片元件。建立 `app/components/BookCard.vue`：
+書籍列表的每一本書，現在只是一行文字。把它做成一個卡片元件。建立 `app/components/BookCard.vue`：
 
 ```vue
 <script setup lang="ts">
@@ -95,7 +95,7 @@ const { likes, like } = useLikes();
 
 `useLikes` 沒有 import，因為它放在 `app/composables/`。原本第一行的 `import { getBook } from "~/utils/books"` 也刪掉了，下面說明為什麼可以。
 
-打開 `/books/2`，按幾下「讚」，數字會增加。這個數字只存在瀏覽器裡，重新整理就歸零，第 13、14 章會學怎麼讓它存起來。
+打開 `/books/2`，按幾下「讚」，數字會增加。這個數字只存在瀏覽器裡，重新整理就歸零。要讓它存起來，資料得放在伺服器上。第 14 章會學怎麼寫自己的 API 存資料，那一章最後的綜合練習就會做一個重新整理也不會歸零的「讚」。
 
 ### 工具函式：`utils/`
 

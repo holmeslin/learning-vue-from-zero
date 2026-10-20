@@ -60,7 +60,7 @@ onMounted(() => {
 
 <template>
   <button @click="increment">{{ count }}（兩倍是 {{ doubled }}）</button>
-  <p>{{ history.join("、") }}</p>
+  <p>{{ history.join('、') }}</p>
 </template>
 ```
 
@@ -105,7 +105,7 @@ export default {
 
 <template>
   <button @click="increment">{{ count }}（兩倍是 {{ doubled }}）</button>
-  <p>{{ history.join("、") }}</p>
+  <p>{{ history.join('、') }}</p>
 </template>
 ```
 
@@ -127,7 +127,7 @@ const message = ref("");
 </template>
 ```
 
-執行 `npm run dev`，兩個按鈕的行為一模一樣。各按四次，兩邊都會顯示「12（兩倍是 24）」，底下記錄「0→3、3→6、6→9、9→12」，最下面出現「到 12 了」。打開瀏覽器的主控台，會看到「掛載完成，count 是 0」印了兩次，一個元件一次。
+執行 `npm run dev`，兩個按鈕的行為一模一樣。各按四次，兩邊都會顯示「12（兩倍是 24）」，底下記錄「0→3、3→6、6→9、9→12」，最下面出現「到 12 了」。打開瀏覽器的 Console，會看到「掛載完成，count 是 0」印了兩次，一個元件一次。
 
 注意：`<template>` 的部分**完全一樣**。兩種寫法的差別只在 `<script>`。
 
@@ -149,7 +149,7 @@ Options API 的 `<script>` 沒有 `setup`，而是 `export default` 一個物件
 
 幾個細節：
 
-- `data` 是一個**函式**，回傳一個物件，物件裡的每個屬性都是響應式的狀態。寫成函式是為了讓每個元件實例拿到自己的一份，不會共用。
+- `data` 是一個**函式**，回傳一個物件，物件裡的每個屬性都是響應式的狀態。寫成函式是為了讓同一個元件用在好幾個地方時，每一份都拿到自己的狀態，不會共用。
 - `watch` 裡的鍵是要監聽的狀態名稱，`count(newValue, oldValue)` 就是「監聽 `count`」。
 - 生命週期 Hook 直接寫成物件的方法，名字沒有 `on`：`mounted`、`unmounted`、`beforeUnmount`、`updated`。另外常看到 `created`，它在元件建立、還沒掛載時執行，在 `<script setup>` 裡，直接寫在最外層的程式碼就是在這個時間點執行的，所以不需要對應的 Hook。
 
@@ -184,7 +184,7 @@ export default {
 };
 ```
 
-第 2 章學過箭頭函式。它有一個特性：沒有自己的 `this`，會沿用外面的 `this`。外面是模組的最上層，那裡的 `this` 是 `undefined`，所以按下按鈕時數字不會變，瀏覽器的主控台會出現錯誤。看到舊程式碼這樣寫出錯時，改成 `increment() { ... }` 的寫法就好。
+第 2 章學過箭頭函式。它有一個特性：沒有自己的 `this`，會沿用外面的 `this`。外面是模組的最上層，那裡的 `this` 是 `undefined`，所以按下按鈕時數字不會變，瀏覽器的 Console 會出現錯誤。看到舊程式碼這樣寫出錯時，改成 `increment() { ... }` 的寫法就好。
 
 `<script setup>` 完全不用 `this`，這個坑也就不存在了。
 

@@ -48,7 +48,7 @@ const qty = ref(1);
 - 讀它：拿到父元件的 `qty`。
 - 改它：父元件的 `qty` 跟著改。
 
-在模板裡寫 `count++` 就好；在 `<script setup>` 裡，它和普通的 `ref` 一樣要寫 `count.value`。
+在模板裡寫 `count++`、`count--`（減一）就好；在 `<script setup>` 裡，它和普通的 `ref` 一樣要寫 `count.value`。
 
 ### 它其實是 props 加 emit
 
@@ -143,7 +143,7 @@ const lastName = defineModel("lastName");
 </script>
 
 <!-- 父元件 -->
-<NameEditor v-model:first-name="first" v-model:last-name="last" />
+<NameEditor v-model:firstName="first" v-model:lastName="last" />
 ```
 
 沒取名字的 `defineModel()`，就是對應到父元件不帶名字的 `v-model`。

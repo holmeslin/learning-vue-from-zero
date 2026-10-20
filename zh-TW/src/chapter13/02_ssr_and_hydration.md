@@ -22,7 +22,7 @@ const count = ref(0);
 </template>
 ```
 
-打開 `http://localhost:3000/counter`，按幾下按鈕，一切正常。
+打開 <http://localhost:3000/counter>，按幾下按鈕，一切正常。
 
 現在用第 12 章學過的方法看原始碼：在網址列輸入 `view-source:http://localhost:3000/counter`（或在頁面上按右鍵，選「檢視網頁原始碼」）。這裡顯示的是**伺服器送來的原始 HTML**，還沒經過任何 JavaScript 處理。
 

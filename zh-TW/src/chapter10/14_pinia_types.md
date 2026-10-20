@@ -158,7 +158,7 @@ const store = useTodoStore();
 
 <template>
   <li @click="store.toggleTodo(todo.id)">
-    {{ todo.done ? "✔" : "　" }} {{ todo.text }}
+    {{ todo.done ? '✔' : '　' }} {{ todo.text }}
   </li>
 </template>
 ```

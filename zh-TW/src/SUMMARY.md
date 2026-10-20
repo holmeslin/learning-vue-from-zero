@@ -206,3 +206,5 @@
     - [在 Nuxt 裡用 Pinia](appendix2/a_pinia_in_nuxt.md)
     - [Nuxt Layers 與模組簡介](appendix2/b_layers_and_modules.md)
     - [VitePress 簡介](appendix2/c_vitepress.md)
+
+[後記](afterword.md)

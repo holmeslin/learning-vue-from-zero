@@ -90,7 +90,7 @@ npm run generate
 
 ### 預覽靜態網站
 
-要注意：`npm run generate` 之後，**`npm run preview` 不能用**。我實際執行，它還是去找 `.output/server/index.mjs` 來啟動伺服器，找不到就出錯：
+要注意：`npm run generate` 之後，**`npm run preview` 不能用**。實際執行會發現，它還是去找 `.output/server/index.mjs` 來啟動伺服器，找不到就出錯：
 
 ```text
 Error: Cannot find module '.../.output/server/index.mjs'

@@ -25,8 +25,9 @@ Vue 是很受歡迎的網頁介面工具，以容易上手出名。但是市面�
 
 | 工具 | 版本 |
 | --- | --- |
-| Node.js | 24（LTS） |
+| Node.js | 24.15 以上（LTS） |
 | Vue | 3.5 |
+| TypeScript | 6.0 |
 | Vite | 8 |
 | Pinia | 4 |
 | Vue Router | 5 |

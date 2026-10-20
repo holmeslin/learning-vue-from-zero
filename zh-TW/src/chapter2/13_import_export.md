@@ -16,7 +16,7 @@ Vue 專案裡，每個元件是一個檔案，檔案之間全靠 `import` 串起
 
 這一集的範例有兩個檔案。在 `learning-vue` 資料夾裡，檔名請用 `.mjs`（不是 `.js`）。`.mjs` 是告訴 Node.js「這個檔案是用 `import` / `export` 寫的」。
 
-> 到了第 4 章用 Vite 建專案之後，工具會幫你處理好，副檔名就回到 `.js`，元件則是 `.vue`。`.mjs` 只是在我們直接用 Node.js 練習時的需求。
+> 到了第 4 章用 create-vue 建立專案之後，工具會幫你處理好，副檔名就回到 `.js`，元件則是 `.vue`。`.mjs` 只是直接用 Node.js 練習時才需要。
 
 ### 具名匯出
 
@@ -133,7 +133,7 @@ import { add as sum } from "./math.mjs";
 import { createApp } from "vue";
 ```
 
-每個 Vue 專案的入口檔案 `main.js` 開頭都有這一行，意思是「從 `vue` 這個套件裡，拿出 `createApp`」。套件要先用 npm 安裝，第 4 章用 create-vue 建專案時會自動裝好。
+每個 Vue 專案的入口檔案 `main.js` 裡都有這一行，意思是「從 `vue` 這個套件裡，拿出 `createApp`」。套件要先用 npm 安裝，第 4 章用 create-vue 建專案時會自動裝好。
 
 ### 在網頁上也一樣
 

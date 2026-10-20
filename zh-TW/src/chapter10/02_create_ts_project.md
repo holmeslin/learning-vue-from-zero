@@ -8,7 +8,7 @@
 
 ### 建立專案
 
-在你放練習專案的資料夾開終端機，執行：
+在你放練習專案的資料夾（第 4 章建立的 `learning-vue`，`hello-vue` 也在裡面）開終端機，執行：
 
 ```bash
 npm create vue@latest -- hello-ts --ts --pinia

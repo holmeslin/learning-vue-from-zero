@@ -155,7 +155,7 @@ console.log(Math.max(...numbers));
 
 `Math.max(...numbers)` 等於 `Math.max(3, 1, 4)`。
 
-### 淺層複製
+### 淺複製
 
 展開只複製「最外面一層」。如果裡面還有物件或陣列，那些內層的東西還是共用的：
 

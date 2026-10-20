@@ -8,7 +8,7 @@
 
 ### 手寫 `routes` 的麻煩
 
-第 9 章的每個路由，都要在 `src/router/index.ts` 的 `routes` 陣列裡加一筆：路徑、元件、名字。頁面一多，這個陣列就變得很長，而且「檔案放在哪」和「網址是什麼」要在兩個地方各寫一次，改了一邊很容易忘了另一邊。
+第 9 章的每個路由，都要在 `src/router/index.js`（TypeScript 專案是 `index.ts`）的 `routes` 陣列裡加一筆：路徑、元件、名字。頁面一多，這個陣列就變得很長，而且「檔案放在哪」和「網址是什麼」要在兩個地方各寫一次，改了一邊很容易忘了另一邊。
 
 **檔案路由**（file-based routing）的想法是：讓檔案的位置直接決定網址。`src/pages/about.vue` 就是 `/about`，不用再登記。
 
@@ -22,7 +22,7 @@ cd appendix-router
 npm install
 ```
 
-這是一個用 TypeScript、已經裝好 Vue Router 的專案，和第 10 章之後的專案一樣。
+這是一個用 TypeScript、已經裝好 Vue Router 的專案。
 
 ### 第一步：加上 Vite 外掛
 
@@ -247,7 +247,7 @@ src/pages/books/[id].vue(8,25): error TS2339: Property 'id' does not exist on ty
 
 手寫 `routes` 時，路由名字打錯要到執行時才會發現；檔案路由在你寫程式的時候就會被抓出來。
 
-官方文件還建議在 `tsconfig.app.json` 加上兩個 Volar 外掛（`vueCompilerOptions.plugins`），讓 `useRoute()` 不用傳名字也能自動推論型別。這是選用的，上面的寫法已經夠用。
+官方文件還建議在 `tsconfig.app.json` 加上兩個 Volar 外掛（Volar 是 VS Code 的 Vue (Official) 擴充功能背後的工具）（`vueCompilerOptions.plugins`），讓 `useRoute()` 不用傳名字也能自動推論型別。這是選用的，上面的寫法已經夠用。
 
 ### 在頁面裡設定路由：`definePage`
 

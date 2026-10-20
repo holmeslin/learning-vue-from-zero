@@ -8,7 +8,7 @@
 
 現在任何人都能刪除任何留言，這不太對。這一集要改成：一般人只能看和留言，刪除要到管理頁 `/admin` 做，而且只有知道暗號的管理者能刪。
 
-我們沒有登入系統，所以用最簡單的方式示範原理：管理者的瀏覽器裡存一個暗號，伺服器收到刪除請求時，檢查暗號對不對。真實的網站會用正式的登入機制，但「在伺服器上檢查身分」這個觀念完全一樣。
+這個留言板沒有登入系統，所以用最簡單的方式示範原理：管理者的瀏覽器裡存一個暗號，伺服器收到刪除請求時，檢查暗號對不對。真實的網站會用正式的登入機制，但「在伺服器上檢查身分」這個觀念完全一樣。
 
 **先說清楚：這一集的做法只是示範，不要直接拿去保護真正的網站。**
 
@@ -124,7 +124,7 @@ export default defineNuxtRouteMiddleware(() => {
 
 ### 試試看
 
-先打開 `http://localhost:3000/admin`，網址會馬上變成 `/login`，middleware 把你請出去了。
+先打開 <http://localhost:3000/admin>，網址會馬上變成 `/login`，middleware 把你請出去了。
 
 接著在登入頁隨便輸入一個暗號，例如「猜錯的暗號」，按登入。你進到管理頁了，也看得到刪除按鈕。
 
@@ -143,14 +143,14 @@ const adminToken = "demo-secret-token";
 
 export default defineEventHandler(async (event) => {
   if (getCookie(event, "admin_token") !== adminToken) {
-    throw createError({ statusCode: 401, message: "需要管理者權限" });
+    throw createError({ status: 401, message: "需要管理者權限" });
   }
 
   const id = getRouterParam(event, "id");
   const messages = await getMessages();
 
   if (!messages.some((message) => message.id === id)) {
-    throw createError({ statusCode: 404, message: "找不到這則留言" });
+    throw createError({ status: 404, message: "找不到這則留言" });
   }
 
   await saveMessages(messages.filter((message) => message.id !== id));
@@ -211,4 +211,4 @@ middleware 讓沒登入的人不會誤闖管理頁，是給使用者的方便；
 - middleware 回傳 `navigateTo(...)` 就會改去別的頁面，什麼都不回傳就照常進入。
 - `useCookie` 在頁面上讀寫 cookie，`getCookie` 在 API 裡讀 cookie。
 - middleware 只能決定要不要顯示頁面，擋不住直接呼叫 API 的人。
-- 需要權限的動作，一定要在 API 一開始就檢查，不通過就 `throw createError({ statusCode: 401, ... })`。
+- 需要權限的動作，一定要在 API 一開始就檢查，不通過就 `throw createError({ status: 401, ... })`。

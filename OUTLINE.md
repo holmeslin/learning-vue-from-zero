@@ -1,8 +1,20 @@
 # 全書大綱
 
-這是規劃用的大綱。實際集數以 `zh-TW/src/SUMMARY.md` 為準。
+這是規劃用的大綱。正文已全部寫完，實際集數以 `zh-TW/src/SUMMARY.md` 為準；與原規劃不同處：
 
-鎖定版本：Vue 3.5、Vite 8、Vue Router 5、Pinia 4、Vitest 4、Nuxt 4、Node.js 24 LTS、npm。專案一律用 `npm create vue@latest`（create-vue）與 `npm create nuxt@latest` 建立，版本以它們產生的為準。Vue 3.6 與 Vapor Mode 在本書撰寫時（2026 年 10 月）還是 RC，正文不用，只在附錄一預覽。
+- 第 4 章 props 拆成兩集（陣列寫法；型別、必填與預設值）。
+- 第 5 章多一集「響應式是怎麼運作的」。
+- 第 6 章多一集「把抓資料抽成 composable」（自己寫 `useFetch`，第 13 章呼應 Nuxt 的同名函式）。
+- 第 9 章多一集「參數變了，畫面卻沒變」，`RouterView` 併入第一集。
+- 第 10 章「建立 TS 專案與 `vue-tsc`」移到第 2 集，泛型拆成兩集。
+- 第 11 章 `vi.fn` / `vi.mock` 分兩集，Pinia 分兩集（store 本身、`createTestingPinia`）。
+- 第 13 章順序改為 `useFetch` → `$fetch` 差別 → `useAsyncData`，延遲載入與 lazy hydration 分兩集。
+- 第 14 章 `server/api` 與 `defineEventHandler` 併成一集，留言板逐集做出來。
+- 第 15 章 `nuxt build` / `preview` 移到第 1 集，`routeRules` 拆成四集（含 `ssr: false`）。
+- 第二部每章各用一個 Nuxt 專案（`hello-nuxt`、`render-demo`、`nuxt-guestbook`、`nuxt-site`）。
+- `createError` 一律傳 `status` / `statusText` / `message`。
+
+鎖定版本：Vue 3.5、Vite 8、Vue Router 5、Pinia 4、Vitest 4、Nuxt 4、TypeScript 6.0、Node.js 24 LTS（24.15 以上）、npm。TypeScript 7 會讓 vue-tsc 3.3 無法執行，需要自己安裝 TypeScript 時一律寫 `typescript@~6.0`。專案一律用 `npm create vue@latest`（create-vue）與 `npm create nuxt@latest` 建立，版本以它們產生的為準。Vue 3.6 與 Vapor Mode 在本書撰寫時（2026 年 10 月）還是 RC，正文不用，只在附錄一預覽。
 
 寫法：正文只教 Composition API 搭配 `<script setup>`，Options API 放附錄一。第一部用 JavaScript，第 10 章教 TypeScript，第二部全部用 TypeScript。
 

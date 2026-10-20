@@ -77,6 +77,8 @@ function submit() {
 </template>
 ```
 
+勾選框沒有用第 5 章的 `v-model`，而是用 `:checked` 顯示目前的狀態、`@change` 呼叫 store 的 `toggleTodo`，原因在下面「元件可以直接改 state 嗎」那一段。
+
 執行起來，一開始顯示「完成 1 / 2」。勾掉「寫作業」變成「完成 2 / 2」；輸入「倒垃圾」按新增，變成「完成 2 / 3」。
 
 ### 三種東西，三個名字
@@ -91,7 +93,7 @@ store 裡的東西分成三種，Pinia 給它們各取了名字：
 
 所以 `todos` 是 state，`doneCount` 是 getter，`addTodo` 和 `toggleTodo` 是 actions。你不用學任何新語法，寫法就是第 5 章的 `ref`、`computed` 和普通函式；這三個名字是為了方便溝通，看文件、看 Vue DevTools 時會一直遇到。
 
-getter 和 `computed` 一樣是唯讀的。在元件裡寫 `todoStore.doneCount = 5` 不會有效果，主控台只會多一行 `target is readonly` 的警告。要改，就去改它依賴的 state。
+getter 和 `computed` 一樣是唯讀的。在元件裡寫 `todoStore.doneCount = 5` 不會有效果，Console 只會多一行 `target is readonly` 的警告。要改，就去改它依賴的 state。
 
 ### 一定要 `return`
 

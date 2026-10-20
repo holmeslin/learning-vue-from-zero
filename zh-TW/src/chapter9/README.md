@@ -23,11 +23,11 @@ Vue 本身只管畫面，換頁要靠另一個套件：**Vue Router**。它是 V
 
 這一章接著用你在第 4 章用 create-vue 建立、第 8 章裝好 Pinia 的那個專案。後面的範例會整個取代 `src/App.vue`，所以如果裡面有想留下來的東西，先另外存一份。
 
-如果你想從頭開一個新專案也可以：
+如果你想從頭開一個新專案也可以（名字不要和原本的 `hello-vue` 重複）：
 
 ```bash
-npm create vue@latest -- hello-vue --pinia
-cd hello-vue
+npm create vue@latest -- hello-router --pinia
+cd hello-router
 npm install
 ```
 

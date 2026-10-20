@@ -20,12 +20,12 @@ cd pinia-demo
 
 ### 用一行指令安裝
 
-第 8 章在 Vue 專案裡用 Pinia，要先 `npm install pinia`，再到 `main.js` 寫 `app.use(createPinia())`。Nuxt 專案沒有 `main.js`，這些事交給一個叫 `@pinia/nuxt` 的**模組**（module）來做。模組是什麼，下一集會講；現在只要知道它是「幫 Nuxt 加功能的套件」。
+第 8 章在 Vue 專案裡用 Pinia，要先 `npm install pinia`，再到 `main.js` 寫 `app.use(createPinia())`。Nuxt 專案沒有 `main.js`，這些事交給一個叫 `@pinia/nuxt` 的**模組**（module）來做。第 12 章裝 `@nuxt/image` 時看過，模組是「幫 Nuxt 加功能的套件」，下一集會再多講一點。
 
 安裝只要一行：
 
 ```bash
-npx nuxi module add pinia
+npx nuxt module add pinia
 ```
 
 ```text
@@ -117,7 +117,7 @@ const cart = useCartStore();
 </template>
 ```
 
-執行 `npm run dev`，打開 `http://localhost:3000`，點幾下按鈕，上面的「購物車：N 件」會跟著變。兩個元件拿到的是同一個 store，和第 8 章一樣。
+執行 `npm run dev`，打開 <http://localhost:3000>，點幾下按鈕，上面的「購物車：N 件」會跟著變。兩個元件拿到的是同一個 store，和第 8 章一樣。
 
 ### 為什麼每個請求要有自己的一份 state
 
@@ -152,12 +152,12 @@ if (import.meta.server && typeof item === "string") {
 </script>
 
 <template>
-  <p>模組層級的 ref：{{ leaky.join("、") }}</p>
-  <p>Pinia store：{{ cart.items.join("、") }}</p>
+  <p>模組層級的 ref：{{ leaky.join('、') }}</p>
+  <p>Pinia store：{{ cart.items.join('、') }}</p>
 </template>
 ```
 
-網址上的 `?add=...` 代表「這位使用者把什麼加進購物車」。`import.meta.server` 是 Nuxt 提供的值，程式在伺服器上執行時是 `true`，在瀏覽器裡是 `false`；這裡用它讓加入購物車只在伺服器上做，方便觀察。
+網址上的 `?add=...` 代表「這位使用者把什麼加進購物車」。`import.meta.server` 是第 13 章第 1 集學過的值，程式在伺服器上執行時是 `true`，在瀏覽器裡是 `false`；這裡用它讓加入購物車只在伺服器上做，方便觀察。
 
 這個實驗要看的是**伺服器送出來的 HTML**，而且要讓同一個伺服器連續處理好幾個請求，所以用第 15 章的方式先建置再啟動：
 
@@ -189,11 +189,11 @@ npm run preview
 <p>Pinia store：</p>
 ```
 
-模組層級的 `ref` 只有一份，伺服器啟動時建立，之後每個請求都共用它，所以小明的鍵盤一路留到別人的畫面上。如果你看到的清單比上面長，例如同一個東西出現兩次，那是你多重新整理了幾次，那些請求也被記住了，正好證明同一件事。這叫做**跨請求的狀態污染**（cross-request state pollution），如果裡面放的是個人資料，就是資安問題。
+模組層級的 `ref` 只有一份，伺服器啟動時建立，之後每個請求都共用它，所以小明的鍵盤一路留到別人的畫面上。如果你看到的清單比上面長，例如同一個東西出現兩次，那是你多重新整理了幾次，那些請求也被記住了，正好證明同一件事。這叫做**跨請求的狀態汙染**（cross-request state pollution），如果裡面放的是個人資料，就是資安問題。
 
 Pinia 那行每次都是乾淨的。原因是 `@pinia/nuxt` 會在每個請求開始時呼叫一次 `createPinia()`，每個請求拿到自己的一份 `state`，用完就丟。
 
-至於畫面：這一頁故意讓伺服器和瀏覽器算出不一樣的東西，所以瀏覽器的主控台可能會出現第 13 章看過的 hydration mismatch 警告，畫面上的文字也可能被瀏覽器重新算過。這個實驗只看原始碼就好。
+至於畫面：這一頁故意讓伺服器和瀏覽器算出不一樣的東西，所以瀏覽器的 Console 可能會出現第 13 章看過的 hydration mismatch 警告，畫面上的文字也可能被瀏覽器重新算過。這個實驗只看原始碼就好。
 
 記住結論：**在 Nuxt 裡，要跨元件共享的資料，放進 Pinia store 或 `useState`，不要放在函式外面的 `ref`。** 實驗做完，把 `useLeakyCart.ts` 和 `compare.vue` 刪掉。
 
@@ -295,8 +295,8 @@ export function useCart() {
 
 ## 重點整理
 
-- `npx nuxi module add pinia` 會安裝 `@pinia/nuxt` 與 Pinia 4，並加進 `nuxt.config.ts`，不用自己 `createPinia()`。
+- `npx nuxt module add pinia` 會安裝 `@pinia/nuxt` 與 Pinia 4，並加進 `nuxt.config.ts`，不用自己 `createPinia()`。
 - `app/stores/` 裡的 store、`defineStore`、`storeToRefs` 都會自動匯入，只掃這一層資料夾。
-- 伺服器同時服務很多人，寫在函式外面的 `ref` 會被所有請求共用；Pinia 每個請求一份 `state`，不會互相污染。
+- 伺服器同時服務很多人，寫在函式外面的 `ref` 會被所有請求共用；Pinia 每個請求一份 `state`，不會互相汙染。
 - 在頁面裡用 `callOnce` 呼叫 action，伺服器抓的資料會跟著 payload 送到瀏覽器，不會重抓。
 - 幾個簡單的值用 `useState`，有一組相關操作的資料用 Pinia。

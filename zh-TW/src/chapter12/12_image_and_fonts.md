@@ -8,7 +8,7 @@
 
 ### 模組
 
-第 2 集建立專案時，有一題問你要不要安裝**模組**（module），你選了 No。模組是替 Nuxt 加功能的套件。它比一般的 npm 套件多做一步：直接改變 Nuxt 的行為：加上新的元件、新的自動匯入、在建置時多做一些事。
+第 2 集建立專案時，有一題問你要不要安裝**模組**（module），你選了 No。模組是替 Nuxt 加功能的套件。它比一般的 npm 套件多做一步，會直接改變 Nuxt 的行為，例如加上新的元件、新的自動匯入、在建置時多做一些事。
 
 這一集要裝兩個 Nuxt 官方的模組：
 
@@ -119,7 +119,7 @@ export default defineNuxtConfig({
 });
 ```
 
-接下來要做的事少到你可能不相信：**照平常的寫法，在 CSS 裡寫字型的名字就好。** 我們幫小書店換成 Noto Sans TC（思源黑體），打開 `app/assets/css/main.css`，把 `body` 的 `font-family` 改成：
+接下來要做的事少到你可能不相信：**照平常的寫法，在 CSS 裡寫字型的名字就好。** 幫小書店換成 Noto Sans TC（思源黑體），打開 `app/assets/css/main.css`，把 `body` 的 `font-family` 改成：
 
 ```css
 body {

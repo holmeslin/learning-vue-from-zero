@@ -160,7 +160,7 @@ const products = [
 </template>
 ```
 
-這樣寫畫面會整片空白，主控台出現一串警告和一行紅字錯誤：
+這樣寫畫面會整片空白，Console 出現一串警告和一行紅字錯誤：
 
 ```text
 [Vue warn]: Property "product" was accessed during render but is not defined

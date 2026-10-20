@@ -31,7 +31,7 @@ onMounted(() => {
 </template>
 ```
 
-存檔，打開 `http://localhost:3000/where`。
+存檔，打開 <http://localhost:3000/where>。
 
 先看**終端機**，也就是你執行 `npm run dev` 的那個視窗，會多出兩行：
 
@@ -40,7 +40,7 @@ setup 執行了
 我在伺服器上
 ```
 
-再看**瀏覽器的主控台**。在頁面上按 F12（Mac 按 ⌥⌘I）打開開發者工具，切到「主控台」（Console）分頁，會看到：
+再看**瀏覽器的 Console**。在頁面上按 F12（Mac 按 ⌥⌘I）打開開發者工具，切到 Console 分頁，會看到：
 
 ```text
 setup 執行了
@@ -48,7 +48,7 @@ setup 執行了
 onMounted 執行了
 ```
 
-主控台裡還會有幾行 Nuxt 和 Vite 自己的訊息，不用理它。
+Console 裡還會有幾行 Nuxt 和 Vite 自己的訊息，不用理它。
 
 同一個檔案、同一段 `<script setup>`，印出來的東西卻出現在兩個地方。而且 `setup 執行了` 兩邊都有，代表這段程式**跑了兩次**：一次在伺服器，一次在瀏覽器。
 
@@ -101,7 +101,7 @@ const width = window.innerWidth;
 </template>
 ```
 
-打開 `http://localhost:3000/window`，頁面會變成 500 錯誤，終端機會出現（太長了，這裡折成兩行）：
+打開 <http://localhost:3000/window>，頁面會變成 500 錯誤，終端機會出現（太長了，這裡折成兩行）：
 
 ```text
 [request error] [GET] /window
@@ -145,7 +145,7 @@ onMounted(() => {
 ## 重點整理
 
 - Nuxt 元件的 `<script setup>` 會跑兩次：先在伺服器，再在瀏覽器。
-- 伺服器上的 `console.log` 會印在終端機，瀏覽器裡的則印在開發者工具的主控台。
+- 伺服器上的 `console.log` 會印在終端機，瀏覽器裡的則印在開發者工具的 Console。
 - `import.meta.server` 和 `import.meta.client` 可以分辨現在在哪裡執行。
 - `onMounted` 只在瀏覽器執行。
 - 伺服器上沒有 `window`、`document`、`localStorage`，用到它們的程式要放進 `onMounted`。

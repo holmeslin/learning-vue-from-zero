@@ -42,7 +42,7 @@ src/components/ItemList.vue:9:42 - error TS2339: Property 'id' does not exist on
 Found 1 error.
 ```
 
-`T` 可以是任何型別，可能是字串、可能是數字，不一定有 `id`。可是 `v-for` 需要 `key`，我們希望每一項都有 `id`。
+`T` 可以是任何型別，可能是字串、可能是數字，不一定有 `id`。可是 `v-for` 需要 `key`，你希望每一項都有 `id`。
 
 ### 用 `extends` 加上條件
 

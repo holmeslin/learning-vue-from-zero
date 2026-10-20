@@ -17,13 +17,19 @@
 
 ## 準備環境
 
-照第 12 章的方式，建立一個新的 Nuxt 專案：
+留言板用一個新的 Nuxt 專案來做，不沿用第 12 章的 `hello-nuxt` 或第 13 章的 `render-demo`。在你放練習專案的資料夾執行：
 
 ```bash
 npm create nuxt@latest nuxt-guestbook
 ```
 
-建好之後進到專案裡，把 `app/app.vue` 改成只顯示頁面：
+專案名稱已經寫在指令後面，所以不會再問你要放在哪裡；範本選 **minimal**，其他問題的回答和第 12 章一樣。建好之後進到專案裡：
+
+```bash
+cd nuxt-guestbook
+```
+
+把 `app/app.vue` 改成只顯示頁面：
 
 ```vue
 <!-- app/app.vue -->
@@ -35,10 +41,9 @@ npm create nuxt@latest nuxt-guestbook
 頁面之後會放在 `app/pages/` 資料夾裡，第 1 集會建立它。最後啟動開發伺服器：
 
 ```bash
-cd nuxt-guestbook
 npm run dev
 ```
 
 這時終端機會出現一行 `No pages found` 的警告，因為還沒有任何頁面，第 1 集建立頁面後就沒事了。
 
-這一章的範例都在這個專案裡寫，`npm run dev` 請一直開著。
+這一章的範例都在這個專案裡寫，`npm run dev` 請一直開著。寫完之後也請把專案留著，第 15 章會回來把管理者的暗號搬到環境變數。

@@ -14,4 +14,10 @@
 
 這一章的重點不是背一堆 API，而是學會一種想法：**測試要檢查「使用者看得到的結果」**。使用者看到的是畫面上的文字、按鈕、輸入框，不是元件裡的變數叫什麼名字。所以測試裡大多是「按下按鈕，畫面上的數字應該變成 1」這種寫法，而不是去讀元件內部的 `ref`。這樣的測試，就算你把元件內部整個改寫，只要畫面行為沒變，測試就不用跟著改。
 
-這一章用 TypeScript 寫，需要先讀完第 10 章。測試的對象會用到前面學過的東西：props、emit、`v-model`、`onMounted`、composable 和 Pinia。第 2 集會用 create-vue 建立一個新的練習專案 `vue-testing`，這一章的所有範例都放在裡面。
+這一章用 TypeScript 寫，需要先讀完第 10 章。測試的對象會用到前面學過的東西：props、emit、`v-model`、`onMounted`、composable 和 Pinia。
+
+## 準備環境
+
+這一章不沿用第 4～9 章的 `hello-vue`（JavaScript 專案），也不沿用第 10 章的 `hello-ts`（沒有裝測試工具）。第 2 集會用 create-vue 在同一個 `learning-vue` 資料夾裡，再建立一個新的練習專案 `vue-testing`，這一章的所有範例都放在裡面。之前的專案都留著就好。
+
+TypeScript 和第 10 章一樣由 create-vue 裝好，是 6.0 版（`~6.0.0`），不要自己升級到 7，否則 `npm run type-check` 用的 `vue-tsc` 會無法執行。

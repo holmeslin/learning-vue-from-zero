@@ -70,7 +70,7 @@ const ticket = useTicketStore();
 
 <template>
   <p>
-    {{ user.name }}：{{ user.isMember ? "會員" : "非會員" }}
+    {{ user.name }}：{{ user.isMember ? '會員' : '非會員' }}
     <button @click="user.toggleMember">切換會員</button>
   </p>
   <p>
@@ -120,7 +120,7 @@ export const useTicketStore = defineStore("ticket", () => {
 });
 ```
 
-畫面會一片空白，主控台出現第 2 集看過的錯誤，開頭是：
+畫面會一片空白，Console 出現第 2 集看過的錯誤，開頭是：
 
 ```text
 [🍍]: "getActivePinia()" was called but there was no active Pinia.
@@ -131,7 +131,7 @@ Are you trying to use a store before calling "app.use(pinia)"?
 
 寫在 `defineStore` 函式裡面就沒有這個問題：那個函式要等到第一次有人呼叫 `useTicketStore()` 時才執行，那時候 App 早就裝好 Pinia 了。
 
-規則很簡單：**`useXxxStore()` 只在 `<script setup>`、store 的函式或 action 裡面呼叫，不要寫在檔案最外層。**
+規則很簡單：**`useXxxStore()` 只在 `<script setup>`、store 的函式或 action 裡面呼叫，不要寫在檔案最外層。** 第 9 章在 Vue Router 的導覽守衛裡用 store 時，也會遇到同樣的規則。
 
 ## 重點整理
 

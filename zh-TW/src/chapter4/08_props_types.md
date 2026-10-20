@@ -21,7 +21,7 @@ import ProductCard from "./components/ProductCard.vue";
 </template>
 ```
 
-畫面看起來完全一樣，主控台也沒有任何訊息。可是 `price` 現在是字串，如果 `ProductCard` 之後要拿它做計算，例如運費加 100 元寫成 `{{ price + 100 }}`，字串加數字會變成把文字接起來，畫面上出現「1200100」，而且你很難發現問題出在哪裡。
+畫面看起來完全一樣，Console 也沒有任何訊息。可是 `price` 現在是字串，如果 `ProductCard` 之後要拿它做計算，例如運費加 100 元寫成 `{{ price + 100 }}`，字串加數字會變成把文字接起來，畫面上出現「1200100」，而且你很難發現問題出在哪裡。
 
 問題在於，`defineProps(["name", "price"])` 只告訴 Vue「我會收這兩個名字」，沒說它們**應該是什麼型別**，所以 Vue 沒辦法幫你檢查。
 
@@ -53,7 +53,7 @@ defineProps({
 - `Array`：陣列
 - `Object`：物件
 
-存檔後，主控台出現了警告：
+存檔後，Console 出現了警告：
 
 ```text
 [Vue warn]: Invalid prop: type check failed for prop "price".
@@ -86,13 +86,13 @@ defineProps({
 </template>
 ```
 
-`name` 的值從單純的 `String`，變成一個物件：`type` 是型別，`required: true` 表示必填。這時如果寫 `<ProductCard :price="1200" />` 沒傳 `name`，主控台會出現：
+`name` 的值從單純的 `String`，變成一個物件：`type` 是型別，`required: true` 表示必填。這時如果寫 `<ProductCard :price="1200" />` 沒傳 `name`，Console 會出現：
 
 ```text
 [Vue warn]: Missing required prop: "name"
 ```
 
-這些警告只會出現在開發時的主控台，不會讓畫面壞掉，但它們幾乎都代表你的程式有地方寫錯了，看到就要去修。
+這些警告只會出現在開發時的 Console，不會讓畫面壞掉，但它們幾乎都代表你的程式有地方寫錯了，看到就要去修。
 
 ### 預設值
 
@@ -184,7 +184,7 @@ props 宣告時用 camelCase（`isNew`），這是 JavaScript 變數的命名習
 
 ## 重點整理
 
-- `defineProps` 的物件寫法可以替每個 props 宣告型別，傳錯型別時主控台會出現警告。
+- `defineProps` 的物件寫法可以替每個 props 宣告型別，傳錯型別時 Console 會出現警告。
 - `{ type: String, required: true }` 表示必填，漏傳會有警告。
 - `{ type: Number, default: 0 }` 表示沒傳時用預設值。
 - `Boolean` 型別的 props 只寫名字就是 `true`，沒寫就是 `false`。

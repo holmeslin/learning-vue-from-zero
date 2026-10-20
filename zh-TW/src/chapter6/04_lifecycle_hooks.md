@@ -95,7 +95,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <p>現在是 {{ now.toLocaleTimeString("zh-TW") }}</p>
+  <p>現在是 {{ now.toLocaleTimeString('zh-TW') }}</p>
 </template>
 ```
 
@@ -111,7 +111,7 @@ const show = ref(true);
 
 <template>
   <button @click="show = !show">
-    {{ show ? "隱藏" : "顯示" }}時鐘
+    {{ show ? '隱藏' : '顯示' }}時鐘
   </button>
   <LiveClock v-if="show" />
 </template>

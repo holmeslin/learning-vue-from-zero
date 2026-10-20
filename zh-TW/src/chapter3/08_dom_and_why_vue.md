@@ -203,7 +203,7 @@ function removeTodo(index) {
 
 - 沒有 `querySelector`、`createElement`、`textContent`、`hidden`。
 - `addTodo` 和 `removeTodo` 只剩改資料的那一行，完全不碰畫面。
-- 畫面上三個跟資料有關的地方，直接寫在 `<template>` 裡：`{{ todos.length }}` 會顯示陣列的長度，`v-if` 決定那段提示要不要出現，`v-for` 讓陣列裡每一項都變成一個 `<li>`。
+- 畫面上三個跟資料有關的地方，直接寫在 `<template>` 裡：`{{ todos.length }}` 會顯示陣列的長度，`v-if` 決定那段提示要不要出現，`v-for` 讓陣列裡每一項都變成一個 `<li>`。正式寫 `v-for` 時還要加上一個 `key`，這裡先省略，第 4 章會講。
 
 這背後是 Vue 的兩個核心：
 

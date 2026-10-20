@@ -33,7 +33,7 @@ const { data: posts, error } = await useFetch<Post[]>(
 </template>
 ```
 
-打開 `http://localhost:3000/posts`，會看到五篇文章的標題（JSONPlaceholder 的假文章是拉丁文，看不懂沒關係）。網址後面的 `?_limit=5` 是叫它只給五篇。
+打開 <http://localhost:3000/posts>，會看到五篇文章的標題（JSONPlaceholder 的假文章是拉丁文，看不懂沒關係）。網址後面的 `?_limit=5` 是叫它只給五篇。
 
 ### 名字好眼熟
 
@@ -129,7 +129,7 @@ if (!post.value) {
 - `[id].vue` 是動態路由，`route.params.id` 拿到網址裡的編號。
 - `createError` 丟出錯誤，Nuxt 會顯示錯誤頁面。欄位的意思和第 12 章一樣。
 
-在列表點任一篇，會進到內頁。手動打 `http://localhost:3000/posts/999`，JSONPlaceholder 沒有這篇，`useFetch` 抓失敗，`post.value` 是 `undefined`，就會顯示 404 錯誤頁和「找不到這篇文章」。
+在列表點任一篇，會進到內頁。手動打 <http://localhost:3000/posts/999>，JSONPlaceholder 沒有這篇，`useFetch` 抓失敗，`post.value` 是 `undefined`，就會顯示 404 錯誤頁和「找不到這篇文章」。
 
 模板裡的 `v-if="post"` 是寫給 TypeScript 看的：它不知道上面已經擋掉 `undefined` 的情況，加了 `v-if` 它才確定 `post` 有值。
 

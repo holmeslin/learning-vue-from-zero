@@ -131,6 +131,8 @@ const { data, loading, error } = useFetch(
 
 所以 `useFetch` 不管收到普通字串、`ref` 還是 getter，都能用 `toValue(url)` 拿到網址。收到普通字串時，監聽只會在一開始執行一次；收到 `ref` 或 getter 時，它會跟著變。這讓同一個 composable 兩種情況都能用。
 
+順帶一提，第二部的 Nuxt 內建一個同名的 `useFetch`，想法和這一集一樣，第 13 章會再見到它。
+
 ## 重點整理
 
 - 抓資料的載入中、錯誤、競態處理可以整包抽成 `useFetch`，元件只要一行呼叫。

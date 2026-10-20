@@ -40,7 +40,7 @@ console.log("$fetch 抓到了：", post.title);
 </template>
 ```
 
-打開 `http://localhost:3000/twice`，畫面正常顯示標題。看起來沒問題，但看一下兩邊的輸出。
+打開 <http://localhost:3000/twice>，畫面正常顯示標題。看起來沒問題，但看一下兩邊的輸出。
 
 終端機：
 
@@ -49,7 +49,7 @@ $fetch 抓到了： sunt aut facere repellat provident occaecati excepturi optio
 reprehenderit
 ```
 
-瀏覽器的主控台：
+瀏覽器的 Console：
 
 ```text
 $fetch 抓到了： sunt aut facere repellat provident occaecati excepturi optio
@@ -88,7 +88,7 @@ console.log("useFetch 拿到了：", post.value?.title);
 </template>
 ```
 
-打開 `http://localhost:3000/once`。終端機和主控台一樣都會印出「useFetch 拿到了：」，因為 setup 照樣跑了兩次。但是「網路」分頁裡**沒有**任何送到 `jsonplaceholder` 的請求。
+打開 <http://localhost:3000/once>。終端機和 Console 一樣都會印出「useFetch 拿到了：」，因為 setup 照樣跑了兩次。但是「網路」分頁裡**沒有**任何送到 `jsonplaceholder` 的請求。
 
 （這是直接打開或重新整理頁面的情況。如果是從別的頁面點 `NuxtLink` 換過來，第 2 集說過那時伺服器沒有參與，`useFetch` 就會在瀏覽器裡抓，看到一次請求是正常的。）
 

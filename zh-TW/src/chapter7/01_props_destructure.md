@@ -120,7 +120,7 @@ const props = defineProps({
 </template>
 ```
 
-效果一樣。這一章之後都用解構的寫法，比較短。
+效果一樣。兩種寫法都很常見，後面的章節也都會出現，看到時知道它們是同一回事就好。
 
 ### 等等，解構出來的東西不是不會變嗎？
 
@@ -148,7 +148,7 @@ watch(count, (newCount) => {
 </template>
 ```
 
-存檔後瀏覽器會跳出紅色的錯誤畫面。用 `npx vite build` 建置也會失敗，訊息是這樣（路徑省略，太長的一行折成兩行）：
+存檔後瀏覽器會跳出紅色的錯誤畫面。用 `npm run build` 建置也會失敗，訊息是這樣（路徑省略，太長的一行折成兩行）：
 
 ```text
 [plugin vite:vue] /…/src/components/CountWatcher.vue

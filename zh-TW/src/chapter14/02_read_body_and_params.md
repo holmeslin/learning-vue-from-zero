@@ -63,7 +63,7 @@ curl -X POST localhost:3000/api/echo \
 
 伺服器收到了，而且 `readBody` 已經幫你把 JSON 轉回物件。
 
-如果用 `GET` 去要這支 API 會怎樣？在瀏覽器打開 `http://localhost:3000/api/echo`：
+如果用 `GET` 去要這支 API 會怎樣？在瀏覽器打開 <http://localhost:3000/api/echo>：
 
 ```text
 {

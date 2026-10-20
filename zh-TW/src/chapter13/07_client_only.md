@@ -43,7 +43,7 @@ const width = window.innerWidth;
 </template>
 ```
 
-打開 `http://localhost:3000/width`，會看到「視窗寬度：」加上你的瀏覽器寬度。終端機沒有任何錯誤。
+打開 <http://localhost:3000/width>，會看到「視窗寬度：」加上你的瀏覽器寬度。終端機沒有任何錯誤。
 
 再看「檢視網頁原始碼」，搜尋「量測中」：
 

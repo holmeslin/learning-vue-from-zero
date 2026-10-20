@@ -15,13 +15,19 @@
 
 ## 準備環境
 
-照第 12 章的方式，在你放練習專案的資料夾建立一個新的 Nuxt 專案：
+這一章的範例要比較各種渲染方式，頁面越單純越好看出差別，所以另外建一個新的 Nuxt 專案。在你放練習專案的資料夾執行：
 
 ```bash
 npm create nuxt@latest nuxt-site
 ```
 
-建好之後進到專案裡，把 `app/app.vue` 改成只顯示頁面：
+和第 14 章一樣，範本選 **minimal**，其他問題的回答和第 12 章一樣。建好之後進到專案裡：
+
+```bash
+cd nuxt-site
+```
+
+把 `app/app.vue` 改成只顯示頁面：
 
 ```vue
 <!-- app/app.vue -->
@@ -58,5 +64,7 @@ const { data } = await useFetch("/api/now");
 ```
 
 執行 `npm run dev`，打開 <http://localhost:3000> 確認畫面上有時間，就可以開始了。
+
+第 14 章的留言板專案 `nuxt-guestbook` 也請留著：第 6 集會回到那個專案，把管理者的暗號改成用環境變數設定。
 
 這一章會常常用 `curl` 看伺服器的回應，用法和第 14 章一樣。Windows 的 PowerShell 要打成 `curl.exe`；有些指令後面接了 `| grep`，PowerShell 沒有 `grep`，改用瀏覽器打開網址、重新整理來觀察就好。

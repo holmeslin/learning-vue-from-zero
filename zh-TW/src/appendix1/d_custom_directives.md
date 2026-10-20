@@ -94,7 +94,7 @@ export const vFocus: Directive<HTMLInputElement> = {
 };
 ```
 
-需要的元件匯入它就能用。名字一樣要以 `v` 開頭：
+需要的元件匯入它就能用。名字一樣要以 `v` 開頭。下面路徑開頭的 `@` 代表 `src` 資料夾，是 create-vue 在 `vite.config.ts` 預先設定好的路徑別名，不管元件放在哪一層都能這樣寫：
 
 ```vue
 <script setup lang="ts">

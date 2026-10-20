@@ -55,7 +55,7 @@ const show = ref(false);
 
 ### 看看什麼時候下載
 
-打開 `http://localhost:3000/lazy`，打開開發者工具的「網路」分頁，篩選欄輸入 `PostComments`，重新整理：
+打開 <http://localhost:3000/lazy>，打開開發者工具的「網路」分頁，篩選欄輸入 `PostComments`，重新整理：
 
 - 剛載入時，列表是空的，`PostComments.vue` 還沒下載。
 - 按下「顯示留言」，列表出現一行 `PostComments.vue`，緊接著是抓留言的 `jsonplaceholder` 請求。

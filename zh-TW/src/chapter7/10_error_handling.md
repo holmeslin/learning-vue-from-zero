@@ -129,7 +129,7 @@ callback 最後的 `return false` 很重要。它的意思是「這個錯誤我�
 
 ### 整個 app 的最後一道防線
 
-所有沒被 `return false` 攔下來的錯誤，最後都會交給 `app.config.errorHandler`。它設定在 `src/main.js`（如果你的專案是 `main.ts`，就改那個檔案）。原本檔案最上面的其他 `import`（例如 CSS）照樣留著，只要把建立 app 的部分改成這樣：
+所有沒被 `return false` 攔下來的錯誤，最後都會交給 `app.config.errorHandler`。`app.config` 是整個應用程式的設定，`errorHandler` 是其中一項，給它一個函式，有錯誤沒人處理時就會呼叫它。它設定在 `src/main.js`，和第 5 集的 `app.provide` 一樣，要寫在 `app.mount()` 之前。原本檔案最上面的其他 `import`（例如 CSS）照樣留著，第 5 集加過 `app.provide` 的話也可以留著，只要把建立 app 的部分改成這樣：
 
 ```js
 import { createApp } from "vue";
@@ -144,7 +144,7 @@ app.config.errorHandler = (err) => {
 app.mount("#app");
 ```
 
-正式的網站通常會在這裡把錯誤送到錯誤追蹤服務，讓開發者知道使用者遇到了什麼問題。
+`console.error` 和 `console.log` 一樣是印出訊息，只是在 Console 裡會用紅字顯示，表示這是錯誤。正式的網站通常會在這裡把錯誤送到錯誤追蹤服務，讓開發者知道使用者遇到了什麼問題。
 
 ## 重點整理
 

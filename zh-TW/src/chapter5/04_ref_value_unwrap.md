@@ -73,13 +73,13 @@ function handleRename() {
   <p>哈囉，{{ name }}</p>
   <button @click="handleRename">改名</button>
   <button @click="isOpen = !isOpen">
-    {{ isOpen ? "收起" : "展開" }}
+    {{ isOpen ? '收起' : '展開' }}
   </button>
   <p v-if="isOpen">這是展開後才看得到的內容。</p>
 </template>
 ```
 
-`isOpen = !isOpen` 是「把布林值反過來」：`true` 變 `false`，`false` 變 `true`。這種「開關」的寫法很常用。
+`isOpen = !isOpen` 是「把布林值反過來」：`true` 變 `false`，`false` 變 `true`。這種「開關」的寫法很常用。像這樣會被一直打開、關上的內容，正是第 4 章說的適合改用 `v-show` 的情況，把 `v-if` 換成 `v-show`，畫面看起來一樣。
 
 `ref` 放陣列和物件的情況，下一集會詳細講。
 

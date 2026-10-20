@@ -8,7 +8,7 @@
 
 ### 想讓兩個元件共用一個值
 
-假設網站要記住「現在的訪客叫什麼名字」，頁面上的標題要用，右上角的小徽章也要用。第 8 章用 Pinia 解決過這種「好幾個元件要共用狀態」的問題。在學 Pinia 之前，你可能會想到更簡單的寫法：把 `ref` 放在函式外面，大家呼叫同一個函式，拿到的就是同一個 `ref`。
+假設網站要記住「現在的訪客叫什麼名字」，頁面上的標題要用，右上角的小徽章也要用。第 8 章用 Pinia 解決過這種「好幾個元件要共用狀態」的問題。如果不想為了一個值裝 Pinia，你可能會想到更簡單的寫法：把 `ref` 放在函式外面，大家呼叫同一個函式，拿到的就是同一個 `ref`。
 
 先照這個想法寫寫看。建立 `app/composables/useVisitor.ts`：
 
@@ -31,7 +31,7 @@ const visitor = useVisitor();
 </script>
 
 <template>
-  <p>右上角：{{ visitor || "未登入" }}</p>
+  <p>右上角：{{ visitor || '未登入' }}</p>
 </template>
 ```
 
@@ -49,12 +49,12 @@ if (typeof route.query.name === "string") {
 
 <template>
   <VisitorBadge />
-  <h1>你好，{{ visitor || "訪客" }}</h1>
+  <h1>你好，{{ visitor || '訪客' }}</h1>
   <input v-model="visitor" />
 </template>
 ```
 
-打開 `http://localhost:3000/hello?name=Amy`，標題和徽章都顯示 Amy。在輸入框裡打字，兩邊會一起變。看起來成功了。
+打開 <http://localhost:3000/hello?name=Amy>，標題和徽章都顯示 Amy。在輸入框裡打字，兩邊會一起變。看起來成功了。
 
 ### 問題：別人也看到了 Amy
 
@@ -76,7 +76,7 @@ view-source:http://localhost:3000/hello
 
 如果存的是登入資訊或購物車，這就是嚴重的資料外洩。
 
-直接打開 `http://localhost:3000/hello` 也會出怪事：伺服器送來的 HTML 寫著 Amy，瀏覽器自己那份 `visitor` 卻是空的，兩邊對不上，主控台會出現 `Hydration text content mismatch` 的警告，畫面最後變成「訪客」。這種警告第 8 集會詳細講。
+直接打開 <http://localhost:3000/hello> 也會出怪事：伺服器送來的 HTML 寫著 Amy，瀏覽器自己那份 `visitor` 卻是空的，兩邊對不上，Console 會出現 `Hydration text content mismatch` 的警告，畫面最後變成「訪客」。這種警告第 8 集會詳細講。
 
 ### 改用 useState
 

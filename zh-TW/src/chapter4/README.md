@@ -10,7 +10,7 @@
 
 你需要：
 
-- 已經安裝好 Node.js 和 VS Code（第 1 章）。Node.js 要 **24.12 或更新**的版本，在終端機輸入 `node -v` 確認；版本太舊的話，到 <https://nodejs.org/> 下載最新的 LTS 版重新安裝。
+- 已經安裝好 Node.js 和 VS Code（第 1 章）。Node.js 要 **24.15 或更新**的版本，在終端機輸入 `node -v` 確認；版本太舊的話，到 <https://nodejs.org/> 下載最新的 LTS 版重新安裝。
 - 第 1 章建立的 `learning-vue` 資料夾。
 - 懂基本的 JavaScript（第 1、2 章）和 HTML、CSS（第 3 章）。特別是三元運算子、`&&` / `||` / `!`、陣列和物件、`import` / `export`，這一章會一直用到。
 

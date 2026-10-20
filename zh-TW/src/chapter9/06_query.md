@@ -26,7 +26,7 @@ const route = useRoute();
 </script>
 
 <template>
-  <p>目前分類：{{ route.query.category ?? "all" }}</p>
+  <p>目前分類：{{ route.query.category ?? 'all' }}</p>
 </template>
 ```
 

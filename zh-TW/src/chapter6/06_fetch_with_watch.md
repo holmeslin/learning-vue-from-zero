@@ -85,7 +85,7 @@ watch(
 
 - **三個 `ref` 對應三種狀況**：`user` 放抓到的資料，`loading` 表示正在抓，`error` 放錯誤訊息。模板用 `v-if` / `v-else-if` 決定顯示哪一種。
 - **監聽 `userId`**：使用者按按鈕改了 `userId`，callback 就重新抓一次。加上 `{ immediate: true }`，頁面一打開就會先抓 1 號。
-- **callback 是 `async` 函式**：裡面用第 2 章學的樣板：`fetch`、檢查 `response.ok`、`json()`，整段用 `try...catch` 包起來。
+- **callback 是 `async` 函式**：裡面是第 2 章學的固定寫法：`fetch`、檢查 `response.ok`、`json()`，整段用 `try...catch` 包起來。
 - **`delay`**：JSONPlaceholder 回應很快，為了看清楚接下來的問題，刻意讓 1 號等兩秒、其他等 0.3 秒。真實的網路速度本來就忽快忽慢，這只是把它放大。
 
 這裡用 `watch` 而不是 `watchEffect`，是因為第 2 集說過的陷阱：`async` 函式在 `await` 之後讀到的值不會被追蹤。用 `watch` 明確寫出「監聽 `userId`」，就不用擔心這件事。

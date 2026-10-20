@@ -143,11 +143,11 @@ const theme = inject(themeKey, ref("light"));
 </script>
 
 <template>
-  <p>目前是 {{ theme === "light" ? "淺色" : "深色" }}</p>
+  <p>目前是 {{ theme === 'light' ? '淺色' : '深色' }}</p>
 </template>
 ```
 
-有了預設值，`theme` 就一定是 `Ref<Theme>`，不會是 `undefined`。在模板裡輸入 `theme === "` 時，編輯器還會列出 `"light"`、`"dark"` 兩個選項。
+有了預設值，`theme` 就一定是 `Ref<Theme>`，不會是 `undefined`。在模板裡輸入 `theme === '` 時，編輯器還會列出 `'light'`、`'dark'` 兩個選項。
 
 ## 重點整理
 

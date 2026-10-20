@@ -90,7 +90,7 @@ console.log(`最貴的商品：${mostExpensiveName}`);
 
 幾個值得注意的地方：
 
-- 四件事都在同一個迴圈裡完成，不需要走訪四次。
+- 第 1、2、4 題都在同一個迴圈裡完成，不需要走訪三次。
 - `finalAmount` 先設成 `total`，只有打折時才改，這樣 `else` 那邊就不用再指定一次。
 - 用 `const` 宣告 `subtotal`，因為它在每一輪裡都不會變；`total`、`highestPrice`、`mostExpensiveName` 會一直被改，所以用 `let`。
 

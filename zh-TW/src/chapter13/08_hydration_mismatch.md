@@ -22,7 +22,7 @@ const lucky = Math.floor(Math.random() * 100);
 
 `Math.random()` 會給一個 0 到 1 之間的隨機小數，乘以 100 再用 `Math.floor` 去掉小數，就是 0 到 99 的整數。
 
-打開 `http://localhost:3000/lucky`，畫面看起來正常。但打開主控台，會看到一段黃色的警告（節錄）和一行紅色的錯誤，數字每次都不一樣：
+打開 <http://localhost:3000/lucky>，畫面看起來正常。但打開 Console，會看到一段黃色的警告（節錄）和一行紅色的錯誤，數字每次都不一樣：
 
 ```text
 [Vue warn]: Hydration text content mismatch on [node HTMLParagraphElement]
@@ -74,7 +74,7 @@ const lucky = useState("lucky", () => Math.floor(Math.random() * 100));
 </template>
 ```
 
-`useState` 的初始值函式只在伺服器上執行一次，結果放進 payload。瀏覽器 hydration 時看到 payload 裡已經有 `"lucky"`，就直接拿來用，不會再呼叫 `Math.random()`。打開 `/lucky-fixed`，主控台不會再有警告。
+`useState` 的初始值函式只在伺服器上執行一次，結果放進 payload。瀏覽器 hydration 時看到 payload 裡已經有 `"lucky"`，就直接拿來用，不會再呼叫 `Math.random()`。打開 `/lucky-fixed`，Console 不會再有警告。
 
 `useFetch`、`useAsyncData` 也是同樣的道理，所以第 4 集說直接 `$fetch` 抓兩次可能會造成 mismatch，而用它們就不會。
 
@@ -106,7 +106,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <p>現在時間：{{ now || "--:--:--" }}</p>
+  <p>現在時間：{{ now || '--:--:--' }}</p>
 </template>
 ```
 

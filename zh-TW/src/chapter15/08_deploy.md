@@ -58,6 +58,8 @@ NITRO_PRESET=vercel npm run build
 
 這是你這一章一直在做的事，所有功能都能用：`server/api`、`swr`、`useStorage` 存檔案都沒問題。缺點是主機要自己照顧：當機了要重開、要更新系統、要處理 HTTPS。官方文件建議在 Nitro 伺服器前面再放一個**反向代理**（reverse proxy，替你接收請求再轉交給 Nitro 的伺服器軟體）來處理 HTTPS。
 
+第 1 步如果選擇在自己電腦建置、只複製 `.output`，要注意建置的電腦和主機是不是同一種。第 12 章裝的 `@nuxt/image` 會把縮圖工具 `sharp` 放進 `.output`，而 `sharp` 只能在和建置時同一種作業系統與晶片的電腦上執行，建置時印出的 `Make sure you deploy to the same architecture` 就是在提醒這件事。例如在 Apple 晶片的 Mac 上建置，再複製到 Linux 主機，圖片處理就會出錯。遇到這種情況，就改在主機上執行 `npm install` 和 `npm run build`。
+
 **2. Vercel、Netlify 這類平台**
 
 這類平台幫你把主機的事都處理好。流程大致是：
@@ -93,7 +95,7 @@ Nuxt 官方把這種叫做「零設定」（zero-config）部署：在這些平�
 - 放在自己的 Node.js 伺服器上：可以用，但要記得 `.data/` 是在**啟動伺服器的那個資料夾**底下。第 14 章說過，換一個資料夾啟動，就會長出一個新的、空的 `.data/kv/`，看起來像是留言全不見了。所以每次都要在同一個資料夾（通常是專案根目錄）啟動；搬家或重灌主機時，也要把 `.data/` 一起帶走。
 - 放在 Vercel、Netlify 這類平台：它們每次處理請求的環境是臨時的，寫進去的檔案隨時可能消失，留言會不見。
 
-所以要認真上線，留言要改存在真正的資料庫，或平台提供的儲存服務。好消息是 `useStorage` 可以換「驅動程式」（driver），把同樣的 `getItem`、`setItem` 接到 Redis 或各平台的儲存服務上，你寫的 API 幾乎不用改。這部分已經超出這本書的範圍，需要的時候查 Nitro 文件的 Storage 章節就好。
+所以要認真上線，留言要改存在真正的資料庫，或平台提供的儲存服務。第 14 章第 3 集看過，`useStorage` 可以換 driver，把同樣的 `getItem`、`setItem` 接到 Redis 或各平台的儲存服務上，你寫的 API 幾乎不用改。這部分已經超出這本書的範圍，需要的時候查 Nitro 文件的 Storage 章節就好。
 
 ### 回頭看第二部
 

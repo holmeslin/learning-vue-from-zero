@@ -47,7 +47,7 @@ const { data } = await useAsyncData("post-1-with-comments", async () => {
 </template>
 ```
 
-打開 `http://localhost:3000/with-comments`，會看到文章標題、「共有 5 則留言」和五則留言的標題。
+打開 <http://localhost:3000/with-comments>，會看到文章標題、「共有 5 則留言」和五則留言的標題。
 
 ### 拆開來看
 

@@ -37,7 +37,7 @@ function handleReplace() {
 
 點「加入芭樂」，清單多一項，下面的「共 N 種水果」也跟著變。點「把第二個換成葡萄」，香蕉就變成葡萄。
 
-`push` 和 `fruits.value[1] = ...` 都是第 1 章學的普通陣列操作，你沒有通知任何人，Vue 卻知道陣列變了。這裡用索引 `index` 當 `key` 是為了讓範例簡單，因為水果名稱可能重複；實際的資料通常會有自己的 `id`，最後一集的待辦清單就會用到。
+`push` 和 `fruits.value[1] = ...` 都是第 1 章學的普通陣列操作，你沒有通知任何人，Vue 卻知道陣列變了。第 4 章說過不要用索引當 `key`，這裡是例外：水果名稱可能重複，不能拿來當 `key`，而這個範例只會在尾端加項目、不會刪除或換順序，索引不會錯位。實際的資料通常會有自己的 `id`，最後一集的待辦清單就會用到。
 
 物件也一樣：
 
@@ -95,7 +95,7 @@ function handleAddOriginal() {
 </script>
 
 <template>
-  <p>{{ fruits.join("、") }}</p>
+  <p>{{ fruits.join('、') }}</p>
   <button @click="handleAddOriginal">直接改原本的陣列</button>
 </template>
 ```
@@ -108,7 +108,7 @@ false
 
 `fruits.value` 是代理人，`original` 是原本的陣列，兩者不是同一個。
 
-點按鈕，`original.push` 確實把芭樂加進去了（代理人背後代表的就是這個陣列），但它**繞過了代理人**，沒有人通知 Vue，所以畫面不會變。這和上一集的普通變數是同樣的道理。
+點按鈕，`original.push` 確實把芭樂加進去了（代理人背後代表的就是這個陣列），但它**繞過了代理人**，沒有人通知 Vue，所以畫面不會變。這和第 2 集的普通變數是同樣的道理。
 
 結論很簡單：交給 `ref` 之後，就只透過 `fruits.value` 去改它，不要再碰原本的變數。
 
@@ -128,7 +128,7 @@ function handleRemoveBanana() {
 </script>
 
 <template>
-  <p>{{ fruits.join("、") }}</p>
+  <p>{{ fruits.join('、') }}</p>
   <button @click="handleRemoveBanana">拿掉香蕉</button>
 </template>
 ```

@@ -159,7 +159,7 @@ provide("theme", { theme, toggleTheme });
 
 這個範例有三個重點：
 
-1. **提供的是 `theme` 這個 `ref` 本身**，不是 `theme.value`。如果寫 `provide("theme", theme.value)`，交出去的只是當下的字串 `"light"`，之後就不會變了。這和上一集「解構出來的 prop 要包成 getter」是同一個道理：要交出「會變的東西」，不是「當下的值」。
+1. **提供的是 `theme` 這個 `ref` 本身**，不是 `theme.value`。如果寫 `provide("theme", theme.value)`，交出去的只是當下的字串 `"light"`，之後就不會變了。這和第 1 集「解構出來的 prop 要包成 getter」是同一個道理：要交出「會變的東西」，不是「當下的值」。
 2. **連同修改的函式一起提供。** 資料放在 `App.vue`，修改它的 `toggleTheme` 也寫在 `App.vue`，下層元件只負責呼叫。之後想知道主題是在哪裡被改的，只要看 `App.vue` 就好。
 3. **一次提供一個物件**，裡面放 `theme` 和 `toggleTheme`，下層用解構拿出來。物件裡的 `theme` 是 `ref`，解構出來還是同一個 `ref`，所以模板裡的 `{{ theme }}` 會自動解包、也會跟著更新。
 
@@ -179,7 +179,7 @@ provide("theme", { theme, toggleTheme });
 
 名稱用字串很方便，但專案一大，兩個元件可能剛好取了一樣的名稱而互相蓋掉。第 10 章學 TypeScript 時，會介紹用 `InjectionKey` 當名稱的做法，同時也能讓編輯器知道 `inject` 拿到的是什麼型別。
 
-整個 app 都要用的資料，也可以在 `src/main.js`（如果你的專案是 `main.ts`，就改那個檔案）用 `app.provide` 提供，效果等於在最上層元件 `provide`。原本檔案最上面的其他 `import`（例如 CSS）照樣留著，只要把建立 app 的部分改成這樣：
+整個 app 都要用的資料，也可以在 `src/main.js` 用 `app.provide` 提供，效果等於在最上層元件 `provide`。原本檔案最上面的其他 `import`（例如 CSS）照樣留著，只要把建立 app 的部分改成這樣：
 
 ```js
 import { createApp } from "vue";
@@ -189,6 +189,8 @@ const app = createApp(App);
 app.provide("siteName", "我的商店");
 app.mount("#app");
 ```
+
+原本一行寫完的 `createApp(App).mount("#app")` 拆成了兩步：先把建立好的應用程式存進 `app` 變數，在 `app.mount()` 之前呼叫 `app.provide()`。任何元件都可以用 `inject("siteName")` 拿到「我的商店」。
 
 ## 重點整理
 

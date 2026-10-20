@@ -123,7 +123,7 @@ NUXT_API_SECRET=prod-key-2026 NUXT_PUBLIC_SITE_NAME=正式網站 \
 
 開頭一定是 `NUXT_`；公開的值再加上 `PUBLIC_`；後面把 camelCase 的名稱改成全大寫、單字之間用底線隔開（`apiSecret` → `API_SECRET`）。
 
-要注意：**只有在 `runtimeConfig` 裡宣告過的名稱才會被覆蓋。** 我試過設了 `NUXT_ADMIN_TOKEN`，卻沒有在 `runtimeConfig` 裡寫 `adminToken`，`useRuntimeConfig(event)` 裡就找不到它。
+要注意：**只有在 `runtimeConfig` 裡宣告過的名稱才會被覆蓋。** 如果設了 `NUXT_ADMIN_TOKEN`，卻沒有在 `runtimeConfig` 裡寫 `adminToken`，`useRuntimeConfig(event)` 裡就找不到它。
 
 ### `.env` 檔
 
@@ -153,7 +153,7 @@ NUXT_PUBLIC_SITE_NAME=開發中的網站
 
 ### 私密值真的沒送出去嗎
 
-現在專案裡有 `.env` 了，先再執行一次 `npm run build`，建置時也會讀 `.env`。接著我實際檢查了兩件事：
+現在專案裡有 `.env` 了，先再執行一次 `npm run build`，建置時也會讀 `.env`。接著檢查兩件事：
 
 1. 在整個 `.output` 資料夾裡搜尋 `abc123`（`.env` 裡金鑰的開頭），一個結果都沒有。金鑰不會被寫進建置的成品。
 2. 打開 `/settings` 的 HTML，Nuxt 會把設定放在一段 `<script>` 裡交給瀏覽器，內容是：
@@ -190,14 +190,14 @@ export default defineNuxtConfig({
 export default defineEventHandler(async (event) => {
   const { adminToken } = useRuntimeConfig(event);
   if (adminToken === "" || getCookie(event, "admin_token") !== adminToken) {
-    throw createError({ statusCode: 401, message: "需要管理者權限" });
+    throw createError({ status: 401, message: "需要管理者權限" });
   }
 
   const id = getRouterParam(event, "id");
   const messages = await getMessages();
 
   if (!messages.some((message) => message.id === id)) {
-    throw createError({ statusCode: 404, message: "找不到這則留言" });
+    throw createError({ status: 404, message: "找不到這則留言" });
   }
 
   await saveMessages(messages.filter((message) => message.id !== id));

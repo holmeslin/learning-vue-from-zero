@@ -69,7 +69,7 @@ onMounted(() => {
 
 ### 事件處理函式的參數
 
-第 5 章寫過這種處理 `input` 事件的函式。在 TypeScript 裡，參數一定要標型別（第 4 集），不標會看到熟悉的錯誤：
+第 5 章在模板裡直接寫過 `@input="name = $event.target.value"`。如果把這段搬進 `<script setup>`，寫成一個收到 `event` 參數的處理函式，在 TypeScript 裡，參數一定要標型別（第 4 集），不標會看到熟悉的錯誤：
 
 ```text
 src/App.vue:2:22 - error TS7006: Parameter 'event' implicitly has an 'any' type.

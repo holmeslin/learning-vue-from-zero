@@ -77,7 +77,7 @@ npm run build
 - `public/`：要直接送給瀏覽器的檔案，像是打包好的 JavaScript（在 `_nuxt/` 裡）和你放在專案 `public/` 資料夾的圖片。
 - `server/`：伺服器的程式。`index.mjs` 是入口，執行它就會啟動網站。
 
-注意 `server/` 裡面有自己的 `node_modules`。建置時，Nuxt 已經把伺服器需要的套件挑出來放進去了，所以 `.output` 是一個**自己就能跑**的資料夾：把它整個複製到另一台裝了 Node.js 的電腦，不用 `npm install` 就能執行。
+注意 `server/` 裡面有自己的 `node_modules`。建置時，Nuxt 已經把伺服器需要的套件挑出來放進去了，所以 `.output` 是一個**自己就能跑**的資料夾：把它整個複製到另一台裝了 Node.js 的電腦，不用 `npm install` 就能執行（有一個要注意的例外，第 8 集會講）。
 
 `.output` 已經寫在 `.gitignore` 裡，不會被放進版本控制。它每次建置都會整個重新產生。
 
