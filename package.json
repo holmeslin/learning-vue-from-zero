@@ -1,0 +1,14 @@
+{
+  "name": "learning-vue-from-zero",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check_code_blocks.mjs",
+    "build": "cd zh-TW && mdbook build",
+    "serve": "cd zh-TW && mdbook serve --open"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "~3.5.44",
+    "esbuild": "^0.28.2"
+  }
+}

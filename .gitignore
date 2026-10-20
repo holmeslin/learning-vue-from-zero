@@ -1,0 +1,4 @@
+node_modules/
+book/
+public/
+.DS_Store
